@@ -5,3 +5,8 @@ Once we are done, save the spec as spec.md
 Ask if the user wants to create a git repo on github. if so, commit the spec.md to git and push it to the newly created git repo. 
 
 Here’s the idea:
+A robust Python program that runs once a day, given a list of blogs, check if there are new posts on those blogs. if there are new posts, send email notifications for this new content.
+Those blogs are blogs without and RSS features like the website https://simplystatistics.org/.
+I want that the infra will be written in modern python, and it will be easy to handle dependecies etc.
+I want to be able to run it both locally and both from github actions.
+

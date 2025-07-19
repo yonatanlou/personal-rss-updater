@@ -1,0 +1,209 @@
+{
+  "Simply Statistics": {
+    "blog_name": "Simply Statistics",
+    "url": "",
+    "last_post_title": "Universities Do Spend Indirect Costs on Research, And It’s Still Not Enough",
+    "last_post_url": "https://simplystatistics.org/",
+    "last_check": "2025-07-19T15:31:29.068539",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:29.068545"
+  },
+  "Keith Schacht's Weblog": {
+    "blog_name": "Keith Schacht's Weblog",
+    "url": "",
+    "last_post_title": "Rails Notes",
+    "last_post_url": "https://keithschacht.com/",
+    "last_check": "2025-07-19T15:31:30.653010",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:30.653015"
+  },
+  "Andrew Heiss's blog": {
+    "blog_name": "Andrew Heiss's blog",
+    "url": "https://www.andrewheiss.com/",
+    "last_post_title": "Fallback - Andrew Heiss",
+    "last_post_url": "https://www.andrewheiss.com/",
+    "last_check": "2025-07-19T15:31:32.017718",
+    "failure_count": 1,
+    "last_success": "2025-07-19T15:09:51.796106"
+  },
+  "Theia Vogel's website & blog": {
+    "blog_name": "Theia Vogel's website & blog",
+    "url": "https://vgel.me/",
+    "last_post_title": "Fallback - Theia Vogel's website & blog",
+    "last_post_url": "https://vgel.me/",
+    "last_check": "2025-07-19T15:31:33.378907",
+    "failure_count": 1,
+    "last_success": "2025-07-19T15:09:53.650498"
+  },
+  "Lil'Log": {
+    "blog_name": "Lil'Log",
+    "url": "",
+    "last_post_title": "Why We Think",
+    "last_post_url": "https://lilianweng.github.io/posts/2025-05-01-thinking/",
+    "last_check": "2025-07-19T15:31:34.688351",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:34.688355"
+  },
+  "the singularity is nearer": {
+    "blog_name": "the singularity is nearer",
+    "url": "",
+    "last_post_title": "The World After Wireheading",
+    "last_post_url": "https://geohot.github.io/blog/jekyll/update/2025/07/18/the-world-after-wireheading.html",
+    "last_check": "2025-07-19T15:31:36.008783",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:36.008788"
+  },
+  "Chip Huyen": {
+    "blog_name": "Chip Huyen",
+    "url": "",
+    "last_post_title": "Chip Huyen",
+    "last_post_url": "https://huyenchip.com/",
+    "last_check": "2025-07-19T15:31:37.621895",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:37.621899"
+  },
+  "Gwern.net Newsletter": {
+    "blog_name": "Gwern.net Newsletter",
+    "url": "",
+    "last_post_title": "Gwern.net Newsletter",
+    "last_post_url": "https://gwern.substack.com/",
+    "last_check": "2025-07-19T15:31:39.358296",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:39.358300"
+  },
+  "Jay Alammar": {
+    "blog_name": "Jay Alammar",
+    "url": "",
+    "last_post_title": "Moving To Substack",
+    "last_post_url": "https://jalammar.github.io/moving_to_substack/",
+    "last_check": "2025-07-19T15:31:40.160853",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:40.160857"
+  },
+  "Yonatan Lourie": {
+    "blog_name": "Yonatan Lourie",
+    "url": "",
+    "last_post_title": "Unsupervised text clustering using GNN (Graph Auto Encoder)",
+    "last_post_url": "https://yonatanlou.github.io/blog/unsupervised-text-clustering-gnn/unsupervised-gae-clustering/",
+    "last_check": "2025-07-19T15:31:41.340258",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:41.340263"
+  },
+  "Math ∩ Programming": {
+    "blog_name": "Math ∩ Programming",
+    "url": "",
+    "last_post_title": "Frequently Asked Questions about FHE",
+    "last_post_url": "https://www.jeremykun.com/frequently-asked-questions-about-fhe/",
+    "last_check": "2025-07-19T15:31:42.724013",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:42.724017"
+  },
+  "Hamel's Blog": {
+    "blog_name": "Hamel's Blog",
+    "url": "",
+    "last_post_title": "💼 Work With Me",
+    "last_post_url": "https://hamel.dev/",
+    "last_check": "2025-07-19T15:31:46.684876",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:46.684881"
+  },
+  "Statistical Odds & Ends": {
+    "blog_name": "Statistical Odds & Ends",
+    "url": "",
+    "last_post_title": "Downloading datasets from Our World in Data in R",
+    "last_post_url": "https://statisticaloddsandends.wordpress.com/2025/01/30/downloading-datasets-from-our-world-in-data-in-r/",
+    "last_check": "2025-07-19T15:31:48.377788",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:48.377792"
+  },
+  "Jascha's blog": {
+    "blog_name": "Jascha's blog",
+    "url": "",
+    "last_post_title": "Neural network training makes beautiful fractals",
+    "last_post_url": "https://sohl-dickstein.github.io/2024/02/12/fractal.html",
+    "last_check": "2025-07-19T15:31:49.450774",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:49.450782"
+  },
+  "Vincent's Blog": {
+    "blog_name": "Vincent's Blog",
+    "url": "",
+    "last_post_title": "koaning.io",
+    "last_post_url": "https://koaning.io/",
+    "last_check": "2025-07-19T15:31:50.983990",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:50.983995"
+  },
+  "Nicholas Carlini": {
+    "blog_name": "Nicholas Carlini",
+    "url": "https://nicholas.carlini.com/writing/",
+    "last_post_title": "Fallback - Writing | Nicholas Carlini",
+    "last_post_url": "https://nicholas.carlini.com/writing/",
+    "last_check": "2025-07-19T15:31:52.524858",
+    "failure_count": 1,
+    "last_success": "2025-07-19T15:10:19.364942"
+  },
+  "Mimansa Jaiswal": {
+    "blog_name": "Mimansa Jaiswal",
+    "url": "https://mimansajaiswal.github.io/",
+    "last_post_title": "Fallback - Home • Mimansa Jaiswal",
+    "last_post_url": "https://mimansajaiswal.github.io/",
+    "last_check": "2025-07-19T15:31:53.836773",
+    "failure_count": 1,
+    "last_success": "2025-07-19T15:10:21.339664"
+  },
+  "near.blog": {
+    "blog_name": "near.blog",
+    "url": "",
+    "last_post_title": "auren.app",
+    "last_post_url": "https://near.blog/",
+    "last_check": "2025-07-19T15:31:55.915441",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:55.915446"
+  },
+  "r y x, r": {
+    "blog_name": "r y x, r",
+    "url": "",
+    "last_post_title": "Why does getting a job in tech suck right now? (Is it AI?!?)",
+    "last_post_url": "https://ryxcommar.com/2024/08/17/why-does-getting-a-job-in-tech-suck-right-now-is-it-ai/",
+    "last_check": "2025-07-19T15:31:57.531214",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:31:57.531218"
+  },
+  "ezyang's blog": {
+    "blog_name": "ezyang's blog",
+    "url": "",
+    "last_post_title": "Vibe coding case study: ScubaDuck",
+    "last_post_url": "https://blog.ezyang.com/2025/06/vibe-coding-case-study-scubaduck/",
+    "last_check": "2025-07-19T15:32:01.303193",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:32:01.303197"
+  },
+  "Julia Evans": {
+    "blog_name": "Julia Evans",
+    "url": "",
+    "last_post_title": "Julia Evans",
+    "last_post_url": "https://jvns.ca/",
+    "last_check": "2025-07-19T15:32:02.788163",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:32:02.788167"
+  },
+  "aviyehuda.com": {
+    "blog_name": "aviyehuda.com",
+    "url": "",
+    "last_post_title": "Let Users Ask Questions to Your Data Lake Using AI and Spark",
+    "last_post_url": "https://aviyehuda.com/2025/07/06/let-users-ask-questions-to-your-data-lake-using-ai-and-spark/",
+    "last_check": "2025-07-19T15:32:04.299831",
+    "failure_count": 0,
+    "last_success": "2025-07-19T15:32:04.299835"
+  },
+  "Dividend Growth Investor": {
+    "blog_name": "Dividend Growth Investor",
+    "url": "https://dividendgrowthinvestor.blogspot.com/",
+    "last_post_title": "Fallback - Dividend Growth Investor",
+    "last_post_url": "https://dividendgrowthinvestor.blogspot.com/",
+    "last_check": "2025-07-19T15:32:06.691328",
+    "failure_count": 1,
+    "last_success": "2025-07-19T15:10:36.163646"
+  }
+}

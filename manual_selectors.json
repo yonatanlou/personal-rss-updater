@@ -1,0 +1,44 @@
+{
+  "aviyehuda.com": {
+    "post_container": "h2",
+    "title_selector": "h2",
+    "link_selector": "h2 a",
+    "description": "Posts are in h2 tags"
+  },
+  "Simply Statistics": {
+    "post_container": "h2",
+    "title_selector": "h2",
+    "link_selector": "h2 a",
+    "description": "Posts are in h2 tags"
+  },
+  "Andrew Heiss's blog": {
+    "post_container": ".post",
+    "title_selector": ".post-title",
+    "link_selector": ".post-title a",
+    "description": "Academic blog layout"
+  },
+  "Nicholas Carlini": {
+    "post_container": ".post",
+    "title_selector": "h3",
+    "link_selector": "h3 a",
+    "description": "Research blog with h3 titles"
+  },
+  "Mimansa Jaiswal": {
+    "post_container": ".post",
+    "title_selector": ".post-title",
+    "link_selector": ".post-title a",
+    "description": "Academic portfolio site"
+  },
+  "Theia Vogel's website & blog": {
+    "post_container": "article",
+    "title_selector": "h2",
+    "link_selector": "h2 a",
+    "description": "Personal blog with articles"
+  },
+  "Dividend Growth Investor": {
+    "post_container": ".post",
+    "title_selector": ".post-title",
+    "link_selector": ".post-title a",
+    "description": "Blogger platform"
+  }
+}

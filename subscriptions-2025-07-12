@@ -28,7 +28,7 @@
       <outline xmlUrl="https://rsseverything.com/feed/33b52c76-c100-457e-8ede-3db9f7daeadb.xml" text="" type="rss" title="Simply Statistics"/>
       <outline xmlUrl="https://jvns.ca/atom.xml" text="" type="rss" title="Julia Evans"/>
       <outline xmlUrl="https://aviyehuda.com/feed/" text="Software, Data, Tech ..." type="rss" title="aviyehuda.com"/>
-      <outline xmlUrl="http://feeds.feedburner.com/DividendGrowthInvestor" text="I am a long term buy and hold investor who focuses on dividend growth stocks" type="rss" title="Dividend Growth Investor"/>
+      <outline xmlUrl="https://www.dividendgrowthinvestor.com/" text="I am a long term buy and hold investor who focuses on dividend growth stocks" type="rss" title="Dividend Growth Investor"/>
     </outline>
   </body>
 </opml>
