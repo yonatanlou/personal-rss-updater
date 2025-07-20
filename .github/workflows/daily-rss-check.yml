@@ -10,6 +10,10 @@ jobs:
   rss-check:
     permissions:
       contents: write
+    env:
+      EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      
     runs-on: ubuntu-latest
     
     steps:
@@ -43,14 +47,10 @@ jobs:
         else
           echo "Found existing blog_states.json"
         fi
-      env:
-        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
       
     - name: Run RSS updater
-      env:
-        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
       run: |
         uv run python -m rss_updater.main
         
