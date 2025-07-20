@@ -226,15 +226,14 @@ cat blog_states.json | jq .
 - **Daily RSS Check** (`.github/workflows/daily-rss-check.yml`)
   - Runs automatically daily at 9:00 AM UTC
   - Can be triggered manually
-  - Automatically downloads previous blog states from artifacts
-  - Auto-initializes if no previous state exists
-  - Uploads updated states for next run
+  - Auto-initializes if `blog_states.json` doesn't exist
+  - Commits and pushes updated states to repository
 
 - **Initialize RSS States** (`.github/workflows/initialize-rss.yml`)
   - Manual trigger only
   - Sets up initial blog states
   - Marks current posts as already read
-  - Uploads states for daily workflow to use
+  - Commits initial `blog_states.json` to repository
 
 ### First-Time Setup
 
@@ -244,17 +243,17 @@ cat blog_states.json | jq .
    - Go to Actions tab
    - Select "Initialize RSS States" 
    - Click "Run workflow"
-   - This creates the initial `blog_states.json` and uploads it as an artifact
+   - This creates and commits the initial `blog_states.json` to your repository
 4. **Daily checks will run automatically** after that
 
 ### How State Persistence Works
 
-The workflows use GitHub Actions artifacts to persist the `blog_states.json` file between runs:
+The workflows use git commits to persist the `blog_states.json` file:
 
-- **Initialization workflow** creates and uploads the initial state
-- **Daily workflow** downloads the previous state, runs the check, and uploads the updated state
-- **Auto-recovery** - If no previous state exists, the daily workflow automatically initializes
-- **Retention** - States are kept for 90 days, with debug snapshots for 7 days
+- **Initialization workflow** creates and commits the initial `blog_states.json`
+- **Daily workflow** updates and commits changes to `blog_states.json` after each run
+- **Auto-recovery** - If `blog_states.json` doesn't exist, the daily workflow automatically initializes
+- **Version history** - All state changes are tracked in git history with timestamps
 
 ### Customizing Schedule
 

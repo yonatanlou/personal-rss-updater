@@ -13,7 +13,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -27,12 +29,15 @@ jobs:
     - name: Install dependencies
       run: uv sync
       
-    - name: Download previous blog states
-      uses: actions/download-artifact@v4
-      with:
-        name: blog-states-persistent
-        path: .
-      continue-on-error: true  # Don't fail if no previous state exists
+    - name: Create config.yaml from template
+      run: |
+        if [ ! -f config.yaml ]; then
+          echo "Creating config.yaml from template..."
+          cp config.yaml.example config.yaml
+          echo "✅ config.yaml created"
+        else
+          echo "config.yaml already exists"
+        fi
       
     - name: Check if blog states exist, if not initialize
       run: |
@@ -53,18 +58,21 @@ jobs:
       run: |
         uv run python -m rss_updater.main
         
-    - name: Upload updated blog states (persistent)
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: blog-states-persistent
-        path: blog_states.json
-        retention-days: 90  # Keep for 3 months
+    - name: Commit and push updated blog states
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         
-    - name: Upload blog states snapshot (debugging)
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: blog-states-snapshot-${{ github.run_number }}
-        path: blog_states.json
-        retention-days: 7
+        if [ -f blog_states.json ]; then
+          git add blog_states.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes to blog_states.json"
+          else
+            git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
+            echo "✅ Blog states updated and pushed"
+          fi
+        else
+          echo "❌ blog_states.json not found"
+        fi

@@ -10,7 +10,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -43,16 +45,12 @@ jobs:
           exit 1
         fi
         
-    - name: Upload initialized states (persistent)
-      uses: actions/upload-artifact@v4
-      with:
-        name: blog-states-persistent
-        path: blog_states.json
-        retention-days: 90  # Keep for 3 months
+    - name: Commit and push initial blog states
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         
-    - name: Upload initialized states (backup)
-      uses: actions/upload-artifact@v4
-      with:
-        name: initialized-blog-states-backup
-        path: blog_states.json
-        retention-days: 30
+        git add blog_states.json
+        git commit -m "Initialize blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+        git push
+        echo "✅ Initial blog states committed and pushed"
