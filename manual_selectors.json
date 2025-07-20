@@ -40,5 +40,17 @@
     "title_selector": ".post-title",
     "link_selector": ".post-title a",
     "description": "Blogger platform"
+  },
+  "Irtiza Hafiz Blog": {
+    "post_container": "h2",
+    "title_selector": "h2",
+    "link_selector": "h2 a",
+    "description": "Posts are in h2 tags"
+  },
+  "Jay Alammar": {
+    "post_container": "h3",
+    "title_selector": "h3",
+    "link_selector": "h3 a",
+    "description": "Substack newsletter - use h3 elements for posts"
   }
 }

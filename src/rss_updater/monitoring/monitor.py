@@ -5,12 +5,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from .config import AppConfig
-from .detector import SelectorDetector
-from .models import Post
-from .scraper import WebScraper
-from .storage import BlogStorage
-from .utils import clean_text
+from ..core import AppConfig, Post
+from ..detector import SelectorDetector
+from ..web import WebScraper
+from ..storage import BlogStorage
+from ..utils import clean_text
 
 
 class BlogMonitor:

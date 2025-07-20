@@ -4,12 +4,8 @@
     "url": "https://simplystatistics.org/"
   },
   {
-    "name": "Keith Schacht's Weblog",
-    "url": "https://keithschacht.com/"
-  },
-  {
     "name": "Andrew Heiss's blog",
-    "url": "https://www.andrewheiss.com/"
+    "url": "https://www.andrewheiss.com/blog/"
   },
   {
     "name": "Theia Vogel's website & blog",
@@ -25,7 +21,7 @@
   },
   {
     "name": "Chip Huyen",
-    "url": "https://huyenchip.com/"
+    "url": "https://vgel.me/posts/"
   },
   {
     "name": "Gwern.net Newsletter",
@@ -33,7 +29,7 @@
   },
   {
     "name": "Jay Alammar",
-    "url": "https://jalammar.github.io/"
+    "url": "https://newsletter.languagemodels.co/"
   },
   {
     "name": "Yonatan Lourie",
@@ -45,7 +41,7 @@
   },
   {
     "name": "Hamel's Blog",
-    "url": "https://hamel.dev/"
+    "url": "https://hamel.dev/#blog"
   },
   {
     "name": "Statistical Odds & Ends",
@@ -57,7 +53,7 @@
   },
   {
     "name": "Vincent's Blog",
-    "url": "https://koaning.io/"
+    "url": "https://koaning.io/feed.xml"
   },
   {
     "name": "Nicholas Carlini",
@@ -65,7 +61,7 @@
   },
   {
     "name": "Mimansa Jaiswal",
-    "url": "https://mimansajaiswal.github.io/"
+    "url": "https://mimansajaiswal.github.io/collections/blurbs/"
   },
   {
     "name": "near.blog",
@@ -89,6 +85,16 @@
   },
   {
     "name": "Dividend Growth Investor",
-    "url": "https://dividendgrowthinvestor.blogspot.com/"
+    "url": "https://www.dividendgrowthinvestor.com/"
+  },
+  {
+    "name": "Irtiza Hafiz Blog",
+    "url": "https://irtizahafiz.com/",
+    "description": "Irtiza Hafiz is a software engineer (YELP)  who writes about technology, data science, and software development."
+  },
+  {
+    "name": "Harper Reed's Blog",
+    "url": "https://harper.blog/index.xml",
+    "description": "Harper Reed is a technologist and entrepreneur who writes about technology, startups, and the future of ."
   }
 ]

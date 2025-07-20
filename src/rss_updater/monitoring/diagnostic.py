@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from .scraper import WebScraper
-from .detector import SelectorDetector
+from ..web import WebScraper
+from ..detector import SelectorDetector
 
 
 def analyze_blog_structure(url: str, blog_name: str = None) -> None:

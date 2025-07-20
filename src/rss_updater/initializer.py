@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 from typing import List, Dict
 
-from .scraper import WebScraper
+from .web import WebScraper
 from .storage import BlogStorage
-from .models import Post
+from .core import Post
 from .detector import SelectorDetector
 
 

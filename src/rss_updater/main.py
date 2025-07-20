@@ -6,12 +6,11 @@ from pathlib import Path
 from typing import NoReturn
 from dotenv import load_dotenv
 
-from .config import load_config, create_sample_config
+from .core import load_config, create_sample_config
 from .storage import BlogStorage
-from .scraper import WebScraper
+from .web import WebScraper
 from .initializer import initialize_blog_states
-from .diagnostic import analyze_failed_blogs, analyze_blog_structure, test_manual_selector
-from .monitor import BlogMonitor
+from .monitoring import analyze_failed_blogs, analyze_blog_structure, test_manual_selector, BlogMonitor
 from .emailer import EmailNotifier
 
 
@@ -22,7 +21,7 @@ def main() -> NoReturn:
     
     parser = argparse.ArgumentParser(description="Personal RSS Updater")
     parser.add_argument('command', nargs='?', default='run', 
-                       choices=['run', 'init', 'analyze', 'test-selector', 'check', 'test-email'], 
+                       choices=['run', 'init', 'sync', 'analyze', 'test-selector', 'check', 'test-email'], 
                        help='Command to execute (default: run)')
     parser.add_argument('--mark-as-read', action='store_true', default=True,
                        help='Mark current posts as already read during init')
@@ -43,6 +42,45 @@ def main() -> NoReturn:
             print("Blog initialization completed successfully!")
         except Exception as e:
             print(f"Initialization failed: {e}")
+            sys.exit(1)
+        sys.exit(0)
+    
+    elif args.command == 'sync':
+        print("\n=== SYNC MODE ===")
+        print("Synchronizing blog states with blogs.json...")
+        try:
+            storage = BlogStorage()
+            sync_result = storage.sync_with_blogs_config()
+            
+            print(f"\n✅ Sync completed successfully!")
+            print(f"Total blogs after sync: {sync_result['total_blogs']}")
+            
+            if sync_result['added']:
+                print(f"\n📥 Added {len(sync_result['added'])} blogs:")
+                for blog in sync_result['added']:
+                    print(f"  + {blog}")
+            
+            if sync_result['removed']:
+                print(f"\n📤 Removed {len(sync_result['removed'])} blogs:")
+                for blog in sync_result['removed']:
+                    print(f"  - {blog}")
+            
+            if sync_result['updated']:
+                print(f"\n🔄 Updated {len(sync_result['updated'])} blogs:")
+                for blog in sync_result['updated']:
+                    print(f"  ↻ {blog}")
+            
+            if sync_result['errors']:
+                print(f"\n❌ Errors during sync:")
+                for error in sync_result['errors']:
+                    print(f"  ! {error}")
+                sys.exit(1)
+            
+            if not any([sync_result['added'], sync_result['removed'], sync_result['updated']]):
+                print("\n📊 No changes detected - blog states already in sync!")
+                
+        except Exception as e:
+            print(f"❌ Sync failed: {e}")
             sys.exit(1)
         sys.exit(0)
     
