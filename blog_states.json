@@ -1,15 +1,5 @@
 {
-  "Simply Statistics": {
-    "blog_name": "Simply Statistics",
-    "url": "https://simplystatistics.org/",
-    "last_post_title": "Universities Do Spend Indirect Costs on Research, And It’s Still Not Enough",
-    "last_post_url": "https://simplystatistics.org/",
-    "last_check": "2025-07-20T11:35:23.440174",
-    "failure_count": 0,
-    "last_success": "2025-07-20T11:35:23.440177",
-    "last_reminder_sent": null,
-    "is_problematic": false
-  },
+
   "Andrew Heiss's blog": {
     "blog_name": "Andrew Heiss's blog",
     "url": "https://www.andrewheiss.com/blog/",
