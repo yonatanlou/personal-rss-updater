@@ -90,11 +90,11 @@
   "Yonatan Lourie": {
     "blog_name": "Yonatan Lourie",
     "url": "https://yonatanlou.github.io/",
-    "last_post_title": "Unsupervised text clustering using GNN (Graph Auto Encoder)",
-    "last_post_url": "https://yonatanlou.github.io/blog/unsupervised-text-clustering-gnn/unsupervised-gae-clustering/",
-    "last_check": "2025-07-20T10:17:37.152225",
+    "last_post_title": null,
+    "last_post_url": null,
+    "last_check": null,
     "failure_count": 0,
-    "last_success": "2025-07-20T10:17:37.152231",
+    "last_success": null,
     "last_reminder_sent": null,
     "is_problematic": false
   },
