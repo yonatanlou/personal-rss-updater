@@ -36,6 +36,9 @@ jobs:
       run: uv sync
       
     - name: Check if blog states exist, if not initialize
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
         echo "Checking environment variables..."
         echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
@@ -50,11 +53,14 @@ jobs:
 
       
     - name: Run RSS updater
-
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
         uv run python -m rss_updater.main
         
     - name: Commit and push updated blog states
+      
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
