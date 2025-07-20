@@ -1,0 +1,9 @@
+blogs: []
+email:
+  recipient: yonatanlou@gmail.com
+  smtp_port: 587
+  smtp_server: smtp.gmail.com
+failure_threshold: 3
+request_delay: 1.0
+retry_count: 3
+user_agent: Mozilla/5.0 (Personal RSS Updater)

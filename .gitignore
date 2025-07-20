@@ -163,7 +163,6 @@ cython_debug/
 .vscode/
 
 # Application specific
-config.yaml
 blog_states.json
 *.log
 .env

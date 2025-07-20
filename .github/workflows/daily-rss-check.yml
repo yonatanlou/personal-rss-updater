@@ -29,16 +29,6 @@ jobs:
     - name: Install dependencies
       run: uv sync
       
-    - name: Create config.yaml from template
-      run: |
-        if [ ! -f config.yaml ]; then
-          echo "Creating config.yaml from template..."
-          cp config.yaml.example config.yaml
-          echo "✅ config.yaml created"
-        else
-          echo "config.yaml already exists"
-        fi
-      
     - name: Check if blog states exist, if not initialize
       run: |
         if [ ! -f blog_states.json ]; then
