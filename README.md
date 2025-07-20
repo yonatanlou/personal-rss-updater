@@ -1,5 +1,12 @@
 # Personal RSS Updater
 
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![GitHub Actions](https://github.com/yonatanlou/personal-rss-updater/workflows/Daily%20RSS%20Check/badge.svg)](https://github.com/yonatanlou/personal-rss-updater/actions)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yonatanlou/personal-rss-updater/graphs/commit-activity)
+
 A robust Python program that monitors blogs for new posts and sends daily email digest notifications. Uses intelligent web scraping to support both RSS and non-RSS blogs.
 
 ## Features
