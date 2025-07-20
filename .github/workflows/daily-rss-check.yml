@@ -6,76 +6,107 @@ on:
     - cron: '0 9 * * *'
   workflow_dispatch:  # Allow manual triggering
 
+
 jobs:
   rss-check:
-    environment: prod
+    runs-on: ubuntu-latest
+    environment: prod   # only if you used an Environment
     permissions:
       contents: write
     env:
       EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      
-    runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        
-    - name: Install uv
-      uses: astral-sh/setup-uv@v3
-      with:
-        version: "latest"
-        
-    - name: Install dependencies
-      run: uv sync
+      - uses: actions/checkout@v4
+
+      - name: Debug env lengths
+        run: |
+          python - <<'PY'
+import os
+for k in ("EMAIL_USERNAME","EMAIL_PASSWORD"):
+    v = os.environ.get(k)
+    print(k, "present:", v is not None, "length:", len(v) if v else 0)
+PY
+
+
+# name: Daily RSS Check
+
+# on:
+#   schedule:
+#     # Run daily at 9:00 AM UTC (adjust timezone as needed)
+#     - cron: '0 9 * * *'
+#   workflow_dispatch:  # Allow manual triggering
+
+# jobs:
+#   rss-check:
+#     environment: prod
+#     permissions:
+#       contents: write
+#     env:
+#       EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+#       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       
-    - name: Check if blog states exist, if not initialize
-      env:
-        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      run: |
-        echo "Checking environment variables..."
-        echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
-        echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
+#     runs-on: ubuntu-latest
+    
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v4
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
         
-        if [ ! -f blog_states.json ]; then
-          echo "No blog_states.json found, running initialization..."
-          uv run python -m rss_updater.main init
-        else
-          echo "Found existing blog_states.json"
-        fi
+#     - name: Set up Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: '3.11'
+        
+#     - name: Install uv
+#       uses: astral-sh/setup-uv@v3
+#       with:
+#         version: "latest"
+        
+#     - name: Install dependencies
+#       run: uv sync
+      
+#     - name: Check if blog states exist, if not initialize
+#       env:
+#         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+#         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+#       run: |
+#         echo "Checking environment variables..."
+#         echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
+#         echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
+        
+#         if [ ! -f blog_states.json ]; then
+#           echo "No blog_states.json found, running initialization..."
+#           uv run python -m rss_updater.main init
+#         else
+#           echo "Found existing blog_states.json"
+#         fi
 
       
-    - name: Run RSS updater
-      env:
-        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      run: |
-        uv run python -m rss_updater.main
+#     - name: Run RSS updater
+#       env:
+#         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+#         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+#       run: |
+#         uv run python -m rss_updater.main
         
-    - name: Commit and push updated blog states
+#     - name: Commit and push updated blog states
 
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+#       run: |
+#         git config --local user.email "action@github.com"
+#         git config --local user.name "GitHub Action"
         
-        if [ -f blog_states.json ]; then
-          git add blog_states.json
+#         if [ -f blog_states.json ]; then
+#           git add blog_states.json
           
-          if git diff --staged --quiet; then
-            echo "No changes to blog_states.json"
-          else
-            git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-            git push
-            echo "✅ Blog states updated and pushed"
-          fi
-        else
-          echo "❌ blog_states.json not found"
-        fi
+#           if git diff --staged --quiet; then
+#             echo "No changes to blog_states.json"
+#           else
+#             git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+#             git push
+#             echo "✅ Blog states updated and pushed"
+#           fi
+#         else
+#           echo "❌ blog_states.json not found"
+#         fi
