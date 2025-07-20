@@ -162,16 +162,6 @@ def main() -> NoReturn:
         print(f"- Blogs configured: {len(config.blogs)}")
         print(f"- Retry count: {config.retry_count}")
         print(f"- Failure threshold: {config.failure_threshold}")
-        
-        # Check for required environment variables
-        if not config.email.username:
-            print("\nWARNING: EMAIL_USERNAME environment variable not set!")
-        if not config.email.password:
-            print("WARNING: EMAIL_PASSWORD environment variable not set!")
-            
-        if not config.email.username or not config.email.password:
-            print("Please set the required environment variables and try again.")
-            sys.exit(1)
             
         print("\nConfiguration validation successful!")
         
@@ -188,27 +178,6 @@ def main() -> NoReturn:
         
         print("\nStorage system initialized successfully!")
         
-        # Test web scraper with a simple blog
-        print("\nTesting web scraper...")
-        test_url = "https://simplystatistics.org/"
-        
-        with WebScraper(user_agent=config.user_agent) as scraper:
-            print(f"Testing scraper with: {test_url}")
-            
-            page_info = scraper.get_page_info(test_url)
-            
-            print("Scraper test results:")
-            print(f"- Status code: {page_info.get('status_code', 'N/A')}")
-            print(f"- Page title: {page_info.get('title', 'N/A')}")
-            print(f"- Content type: {page_info.get('content_type', 'N/A')}")
-            print(f"- Page size: {page_info.get('page_size', 0)} bytes")
-            
-            if page_info.get('error'):
-                print(f"- Error: {page_info['error']}")
-            else:
-                print("- ✓ Scraper working correctly!")
-        
-        print("\nWeb scraper test completed!")
         
         # Full workflow: Check for new posts and send email if found
         print("\n=== RUNNING FULL WORKFLOW ===")
