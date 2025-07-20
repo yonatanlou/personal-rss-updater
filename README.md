@@ -196,9 +196,18 @@ uv run mypy src/
    - Ensure secret names are exactly `EMAIL_USERNAME` and `EMAIL_PASSWORD` (case-sensitive)
    - Use Gmail app passwords, not regular passwords
 
-2. **Email not sending**: Check EMAIL_USERNAME and EMAIL_PASSWORD environment variables
-3. **Blog not detected**: Add manual selectors to `manual_selectors.json`
-4. **Import errors**: Run `uv sync` to install dependencies
+2. **SMTP Authentication failed (535, 5.7.8 Username and Password not accepted)**:
+   - **Most common cause**: Using regular password instead of app password
+   - **Solution**: 
+     1. Enable 2FA on Gmail: [Security Settings](https://myaccount.google.com/security)
+     2. Generate app password: [App Passwords](https://support.google.com/accounts/answer/185833)
+     3. Use the 16-character app password as `EMAIL_PASSWORD`
+     4. Try both username formats: `yonatanlou@gmail.com` or just `yonatanlou`
+   - **Alternative**: Enable "Less secure app access" (not recommended)
+
+3. **Email not sending**: Check EMAIL_USERNAME and EMAIL_PASSWORD environment variables
+4. **Blog not detected**: Add manual selectors to `manual_selectors.json`
+5. **Import errors**: Run `uv sync` to install dependencies
 
 ### Debug Commands
 

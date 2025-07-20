@@ -110,6 +110,15 @@ def main() -> NoReturn:
         
         try:
             config = load_config(config_path)
+            
+            # Show email configuration for check mode
+            if config.email.username and config.email.password:
+                print(f"Email credentials available:")
+                print(f"- Sender username (from env): {config.email.username}")
+                print(f"- Recipient (from config): {config.email.recipient}")
+            else:
+                print("⚠️  Email credentials not set - email notifications disabled")
+            
             monitor = BlogMonitor(config)
             results = monitor.check_all_blogs()
             
@@ -135,6 +144,17 @@ def main() -> NoReturn:
         
         try:
             config = load_config(config_path)
+            
+            # Show email configuration being used
+            print(f"Email credentials:")
+            print(f"- Sender username (from env): {config.email.username}")
+            print(f"- Recipient (from config): {config.email.recipient}")
+            print(f"- Password set: {'Yes' if config.email.password else 'No'}")
+            
+            if not config.email.username or not config.email.password:
+                print("❌ Missing email credentials. Set EMAIL_USERNAME and EMAIL_PASSWORD environment variables.")
+                sys.exit(1)
+            
             emailer = EmailNotifier(config)
             success = emailer.send_test_email()
             sys.exit(0 if success else 1)
@@ -162,6 +182,22 @@ def main() -> NoReturn:
         print(f"- Blogs configured: {len(config.blogs)}")
         print(f"- Retry count: {config.retry_count}")
         print(f"- Failure threshold: {config.failure_threshold}")
+        
+        # Check email credentials and show what's being used
+        print(f"\nEmail credentials:")
+        print(f"- Sender username (from env): {config.email.username}")
+        print(f"- Recipient (from config): {config.email.recipient}")
+        print(f"- Password set: {'Yes' if config.email.password else 'No'}")
+        
+        # Check for required environment variables
+        if not config.email.username:
+            print("\nWARNING: EMAIL_USERNAME environment variable not set!")
+        if not config.email.password:
+            print("WARNING: EMAIL_PASSWORD environment variable not set!")
+            
+        if not config.email.username or not config.email.password:
+            print("Please set the required environment variables and try again.")
+            sys.exit(1)
             
         print("\nConfiguration validation successful!")
         
@@ -196,6 +232,11 @@ def main() -> NoReturn:
         new_posts = results.get('new_posts', [])
         if new_posts or failed_summary:
             print("\n=== SENDING EMAIL DIGEST ===")
+            print(f"Email will be sent:")
+            print(f"- From: {config.email.username} (sender from env)")
+            print(f"- To: {config.email.recipient} (recipient from config)")
+            print(f"- SMTP: {config.email.smtp_server}:{config.email.smtp_port}")
+            
             emailer = EmailNotifier(config)
             email_success = emailer.send_digest(new_posts, results['stats'], failed_summary)
             

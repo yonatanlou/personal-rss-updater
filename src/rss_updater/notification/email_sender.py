@@ -53,6 +53,13 @@ class EmailSender:
                 
             except smtplib.SMTPAuthenticationError as e:
                 print(f"❌ SMTP Authentication failed: {e}")
+                print(f"Username being used: {self.config.email.username}")
+                print(f"SMTP server: {self.config.email.smtp_server}:{self.config.email.smtp_port}")
+                print("Troubleshooting tips:")
+                print("1. Ensure 2FA is enabled on Gmail")
+                print("2. Generate an app password: https://support.google.com/accounts/answer/185833")
+                print("3. Use the app password as EMAIL_PASSWORD, not your regular password")
+                print("4. Try username format: full email vs just username part")
                 return False  # Don't retry auth failures
                 
             except (smtplib.SMTPException, ConnectionError) as e:
