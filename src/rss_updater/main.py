@@ -174,7 +174,10 @@ def main() -> NoReturn:
             sys.exit(1)
         
         config = load_config(config_path)
-        
+        if not config.email.username:
+            config.email.username = os.getenv('EMAIL_USERNAME')
+        if not config.email.password:
+            config.email.password = os.getenv('EMAIL_PASSWORD')
         # Print loaded configuration (with sensitive data masked)
         print("\nConfiguration loaded successfully:")
         print(f"- Email recipient: {config.email.recipient}")
