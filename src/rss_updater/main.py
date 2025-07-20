@@ -12,6 +12,7 @@ from .web import WebScraper
 from .initializer import initialize_blog_states
 from .monitoring import analyze_failed_blogs, analyze_blog_structure, test_manual_selector, BlogMonitor
 from .emailer import EmailNotifier
+import os
 
 
 def main() -> NoReturn:
