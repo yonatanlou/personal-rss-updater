@@ -31,9 +31,28 @@ jobs:
       run: |
         uv run python -m rss_updater.main init
         
-    - name: Upload initialized states
+    - name: Verify blog states file was created
+      run: |
+        if [ -f blog_states.json ]; then
+          echo "✅ blog_states.json created successfully"
+          ls -la blog_states.json
+          echo "Content preview:"
+          head -20 blog_states.json
+        else
+          echo "❌ blog_states.json was not created"
+          exit 1
+        fi
+        
+    - name: Upload initialized states (persistent)
       uses: actions/upload-artifact@v4
       with:
-        name: initialized-blog-states
+        name: blog-states-persistent
+        path: blog_states.json
+        retention-days: 90  # Keep for 3 months
+        
+    - name: Upload initialized states (backup)
+      uses: actions/upload-artifact@v4
+      with:
+        name: initialized-blog-states-backup
         path: blog_states.json
         retention-days: 30

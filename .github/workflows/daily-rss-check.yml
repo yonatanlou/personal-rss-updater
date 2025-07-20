@@ -27,6 +27,25 @@ jobs:
     - name: Install dependencies
       run: uv sync
       
+    - name: Download previous blog states
+      uses: actions/download-artifact@v4
+      with:
+        name: blog-states-persistent
+        path: .
+      continue-on-error: true  # Don't fail if no previous state exists
+      
+    - name: Check if blog states exist, if not initialize
+      run: |
+        if [ ! -f blog_states.json ]; then
+          echo "No blog_states.json found, running initialization..."
+          uv run python -m rss_updater.main init
+        else
+          echo "Found existing blog_states.json"
+        fi
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      
     - name: Run RSS updater
       env:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
@@ -34,10 +53,18 @@ jobs:
       run: |
         uv run python -m rss_updater.main
         
-    - name: Upload blog states (optional - for debugging)
+    - name: Upload updated blog states (persistent)
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: blog-states-${{ github.run_number }}
+        name: blog-states-persistent
+        path: blog_states.json
+        retention-days: 90  # Keep for 3 months
+        
+    - name: Upload blog states snapshot (debugging)
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: blog-states-snapshot-${{ github.run_number }}
         path: blog_states.json
         retention-days: 7
