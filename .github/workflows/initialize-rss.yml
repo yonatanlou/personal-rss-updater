@@ -1,0 +1,39 @@
+name: Initialize RSS States
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+        
+    - name: Install dependencies
+      run: uv sync
+      
+    - name: Initialize blog states
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      run: |
+        uv run python -m rss_updater.main init
+        
+    - name: Upload initialized states
+      uses: actions/upload-artifact@v4
+      with:
+        name: initialized-blog-states
+        path: blog_states.json
+        retention-days: 30

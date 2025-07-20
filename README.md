@@ -208,6 +208,56 @@ uv run python -m rss_updater.main test-email
 cat blog_states.json | jq .
 ```
 
+## GitHub Actions Deployment
+
+### Daily Automation Setup
+
+1. **Configure repository secrets** in GitHub Settings > Secrets and variables > Actions:
+   - `EMAIL_USERNAME` - Your email address
+   - `EMAIL_PASSWORD` - Your email app password
+
+2. **The workflow runs automatically** every day at 9:00 AM UTC. You can:
+   - Adjust the schedule in `.github/workflows/daily-rss-check.yml`
+   - Trigger manually from GitHub Actions tab
+   - View logs and artifacts from each run
+
+### Available Workflows
+
+- **Daily RSS Check** (`.github/workflows/daily-rss-check.yml`)
+  - Runs automatically daily at 9:00 AM UTC
+  - Can be triggered manually
+  - Uploads blog states as artifacts for debugging
+
+- **Initialize RSS States** (`.github/workflows/initialize-rss.yml`)
+  - Manual trigger only
+  - Sets up initial blog states
+  - Marks current posts as already read
+
+### First-Time Setup
+
+1. **Push to GitHub** with the workflow files
+2. **Set repository secrets** for email credentials
+3. **Run initialization workflow** manually once:
+   - Go to Actions tab
+   - Select "Initialize RSS States" 
+   - Click "Run workflow"
+4. **Daily checks will run automatically** after that
+
+### Customizing Schedule
+
+Edit the cron expression in `daily-rss-check.yml`:
+
+```yaml
+schedule:
+  # Examples:
+  - cron: '0 9 * * *'    # 9:00 AM UTC daily
+  - cron: '0 17 * * *'   # 5:00 PM UTC daily  
+  - cron: '0 9 * * 1-5'  # 9:00 AM UTC weekdays only
+  - cron: '0 */6 * * *'  # Every 6 hours
+```
+
+Use [crontab.guru](https://crontab.guru/) to help create custom schedules.
+
 ## License
 
 MIT License
