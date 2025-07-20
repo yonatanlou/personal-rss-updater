@@ -1,235 +1,81 @@
-name: Daily RSS Check (Debug)
+name: Daily RSS Check
 
 on:
   schedule:
+    # Run daily at 9:00 AM UTC (adjust timezone as needed)
     - cron: '0 9 * * *'
-  workflow_dispatch:
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   rss-check:
-    # Uncomment the next line IF your secrets were added under an Environment (e.g. "prod")
-    # environment: prod
-
-    runs-on: ubuntu-latest
+    environment: prod
     permissions:
       contents: write
-
     env:
-      # Primary source (repository or environment secrets)
       EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      # Also pull possible variables (just in case you actually added them as repo variables)
-      VAR_EMAIL_USERNAME: ${{ vars.EMAIL_USERNAME }}
-      VAR_EMAIL_PASSWORD: ${{ vars.EMAIL_PASSWORD }}
-
-    steps:
-      - name: Show event info
-        run: |
-          echo "Triggered by event: $GITHUB_EVENT_NAME"
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Ref: $GITHUB_REF"
-          echo "Actor: $GITHUB_ACTOR"
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          version: latest
-
-      - name: Install dependencies
-        run: uv sync
-
-      - name: Raw env grep (EMAIL*)
-        run: |
-            echo "Environment vars that start with EMAIL or VAR_EMAIL:"
-            env | grep -E '(^EMAIL_|^VAR_EMAIL_)' || true
-            echo
-            echo "Mask note: actual secret values (if configured) will appear as *** when echoed directly."
-
-  
-
-      - name: Decide which credentials will be used
-        id: pick_creds
-        run: |
-          # Prefer secrets.* if set (non empty). Fallback to vars.* if secrets empty.
-          choose() {
-            local primary="$1" fallback="$2"
-            if [ -n "${!primary}" ]; then
-              echo "${!primary}"
-            elif [ -n "${!fallback}" ]; then
-              echo "${!fallback}"
-            else
-              echo ""
-            fi
-          }
-
-          FINAL_USER="$(choose EMAIL_USERNAME VAR_EMAIL_USERNAME)"
-          FINAL_PASS_LEN=0
-          TMP_PASS="$(choose EMAIL_PASSWORD VAR_EMAIL_PASSWORD)"
-          [ -n "$TMP_PASS" ] && FINAL_PASS_LEN="${#TMP_PASS}"
-
-          if [ -z "$FINAL_USER" ] || [ -z "$TMP_PASS" ]; then
-            echo "FATAL: One or both credentials are missing."
-            echo "EMAIL_USERNAME secret length: ${#EMAIL_USERNAME}"
-            echo "EMAIL_PASSWORD secret length: ${#EMAIL_PASSWORD}"
-            echo "VAR_EMAIL_USERNAME length: ${#VAR_EMAIL_USERNAME}"
-            echo "VAR_EMAIL_PASSWORD length: ${#VAR_EMAIL_PASSWORD}"
-            echo
-            echo "Checklist:"
-            echo "1. Repo Settings > Secrets and variables > Actions > Secrets: defined?"
-            echo "2. If under an Environment, uncomment environment: line."
-            echo "3. Not running from a forked PR?"
-            echo "4. Correct names (case exact)?"
-            exit 1
-          fi
-
-          # Export for later steps
-          {
-            echo "FINAL_EMAIL_USERNAME<<EOF"
-            echo "$FINAL_USER"
-            echo "EOF"
-            echo "FINAL_EMAIL_PASSWORD_SET=true"
-            echo "FINAL_EMAIL_PASSWORD_LENGTH=$FINAL_PASS_LEN"
-          } >> "$GITHUB_OUTPUT"
-
-          echo "Chosen username length: ${#FINAL_USER}"
-          echo "Chosen password length: $FINAL_PASS_LEN (value masked in logs)"
-
-      - name: Verify picked credentials (sanity)
-        run: |
-          echo "FINAL_EMAIL_USERNAME length: ${{ steps.pick_creds.outputs.FINAL_EMAIL_USERNAME }} | (value not printed, only using length via wc)"
-          echo "${{ steps.pick_creds.outputs.FINAL_EMAIL_USERNAME }}" | wc -c | awk '{print "Computed username length via wc: "$1-1}'
-          echo "Password length recorded: ${{ steps.pick_creds.outputs.FINAL_EMAIL_PASSWORD_LENGTH }}"
-
-      - name: Initialize blog_states.json if missing
-        env:
-          EMAIL_USERNAME: ${{ steps.pick_creds.outputs.FINAL_EMAIL_USERNAME }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD || vars.EMAIL_PASSWORD }}
-        run: |
-          echo "Using EMAIL_USERNAME length: $(echo -n "$EMAIL_USERNAME" | wc -c)"
-          if [ ! -f blog_states.json ]; then
-            echo "No blog_states.json found. Initializing..."
-            uv run python -m rss_updater.main init
-          else
-            echo "blog_states.json exists."
-          fi
-
-      - name: Run RSS updater
-        env:
-          EMAIL_USERNAME: ${{ steps.pick_creds.outputs.FINAL_EMAIL_USERNAME }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD || vars.EMAIL_PASSWORD }}
-        run: |
-          set -e
-          echo "Running main RSS update..."
-          uv run python -m rss_updater.main
-
-      - name: Commit and push updated blog states
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-          if [ -f blog_states.json ]; then
-            git add blog_states.json
-            if git diff --staged --quiet; then
-              echo "No changes to blog_states.json"
-            else
-              git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-              git push
-              echo "Blog states updated and pushed."
-            fi
-          else
-            echo "blog_states.json not found after run."
-            exit 1
-          fi
-
-
-# name: Daily RSS Check
-
-# on:
-#   schedule:
-#     # Run daily at 9:00 AM UTC (adjust timezone as needed)
-#     - cron: '0 9 * * *'
-#   workflow_dispatch:  # Allow manual triggering
-
-# jobs:
-#   rss-check:
-#     environment: prod
-#     permissions:
-#       contents: write
-#     env:
-#       EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-#       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       
-#     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v4
-#       with:
-#         token: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         
-#     - name: Set up Python
-#       uses: actions/setup-python@v4
-#       with:
-#         python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
         
-#     - name: Install uv
-#       uses: astral-sh/setup-uv@v3
-#       with:
-#         version: "latest"
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
         
-#     - name: Install dependencies
-#       run: uv sync
+    - name: Install dependencies
+      run: uv sync
       
-#     - name: Check if blog states exist, if not initialize
-#       env:
-#         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-#         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-#       run: |
-#         echo "Checking environment variables..."
-#         echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
-#         echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
+    - name: Check if blog states exist, if not initialize
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      run: |
+        echo "Checking environment variables..."
+        echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
+        echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
         
-#         if [ ! -f blog_states.json ]; then
-#           echo "No blog_states.json found, running initialization..."
-#           uv run python -m rss_updater.main init
-#         else
-#           echo "Found existing blog_states.json"
-#         fi
+        if [ ! -f blog_states.json ]; then
+          echo "No blog_states.json found, running initialization..."
+          uv run python -m rss_updater.main init
+        else
+          echo "Found existing blog_states.json"
+        fi
 
       
-#     - name: Run RSS updater
-#       env:
-#         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-#         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-#       run: |
-#         uv run python -m rss_updater.main
+    - name: Run RSS updater
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      run: |
+        uv run python -m rss_updater.main
         
-#     - name: Commit and push updated blog states
+    - name: Commit and push updated blog states
 
-#       run: |
-#         git config --local user.email "action@github.com"
-#         git config --local user.name "GitHub Action"
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         
-#         if [ -f blog_states.json ]; then
-#           git add blog_states.json
+        if [ -f blog_states.json ]; then
+          git add blog_states.json
           
-#           if git diff --staged --quiet; then
-#             echo "No changes to blog_states.json"
-#           else
-#             git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-#             git push
-#             echo "✅ Blog states updated and pushed"
-#           fi
-#         else
-#           echo "❌ blog_states.json not found"
-#         fi
+          if git diff --staged --quiet; then
+            echo "No changes to blog_states.json"
+          else
+            git commit -m "Update blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
+            echo "✅ Blog states updated and pushed"
+          fi
+        else
+          echo "❌ blog_states.json not found"
+        fi
