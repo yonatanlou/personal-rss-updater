@@ -13,11 +13,11 @@
   "Andrew Heiss's blog": {
     "blog_name": "Andrew Heiss's blog",
     "url": "https://www.andrewheiss.com/blog/",
-    "last_post_title": null,
-    "last_post_url": null,
-    "last_check": "2025-07-20T10:17:27.471650",
+    "last_post_title": "Fallback - Blog | Andrew Heiss – Andrew Heiss",
+    "last_post_url": "https://www.andrewheiss.com/blog/",
+    "last_check": "2025-07-20T11:09:15.604680",
     "failure_count": 1,
-    "last_success": "2025-07-19T15:09:51.796106",
+    "last_success": "2025-07-20T11:09:15.604682",
     "last_reminder_sent": null,
     "is_problematic": false
   },
@@ -145,11 +145,11 @@
   "Vincent's Blog": {
     "blog_name": "Vincent's Blog",
     "url": "https://koaning.io/feed.xml",
-    "last_post_title": null,
-    "last_post_url": null,
-    "last_check": "2025-07-20T10:17:44.210155",
+    "last_post_title": "Fallback - Vincent's Blog",
+    "last_post_url": "https://koaning.io/feed.xml",
+    "last_check": "2025-07-20T11:09:16.568190",
     "failure_count": 2,
-    "last_success": "2025-07-19T22:36:50.413995",
+    "last_success": "2025-07-20T11:09:16.568192",
     "last_reminder_sent": null,
     "is_problematic": false
   },
@@ -167,11 +167,11 @@
   "Mimansa Jaiswal": {
     "blog_name": "Mimansa Jaiswal",
     "url": "https://mimansajaiswal.github.io/collections/blurbs/",
-    "last_post_title": null,
-    "last_post_url": null,
-    "last_check": "2025-07-20T10:17:47.194632",
+    "last_post_title": "Fallback - Blurbs • Mimansa Jaiswal",
+    "last_post_url": "https://mimansajaiswal.github.io/collections/blurbs/",
+    "last_check": "2025-07-20T11:09:17.691751",
     "failure_count": 2,
-    "last_success": "2025-07-19T15:10:21.339664",
+    "last_success": "2025-07-20T11:09:17.691753",
     "last_reminder_sent": null,
     "is_problematic": false
   },
@@ -255,11 +255,11 @@
   "Harper Reed's Blog": {
     "blog_name": "Harper Reed's Blog",
     "url": "https://harper.blog/index.xml",
-    "last_post_title": null,
-    "last_post_url": null,
-    "last_check": "2025-07-20T10:18:01.253764",
+    "last_post_title": "Fallback - Home on \n            \n            Harper Reed's Blog",
+    "last_post_url": "https://harper.blog/index.xml",
+    "last_check": "2025-07-20T11:09:18.754997",
     "failure_count": 2,
-    "last_success": null,
+    "last_success": "2025-07-20T11:09:18.754998",
     "last_reminder_sent": null,
     "is_problematic": false
   }
