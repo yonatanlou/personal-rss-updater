@@ -191,30 +191,49 @@ uv run mypy src/
 
 ### Common Issues
 
-1. **Email not sending**: Check EMAIL_USERNAME and EMAIL_PASSWORD environment variables
-2. **Blog not detected**: Add manual selectors to `manual_selectors.json`
-3. **Import errors**: Run `uv sync` to install dependencies
+1. **GitHub Actions failing with "EMAIL_USERNAME environment variable not set"**:
+   - Check that repository secrets are set correctly in GitHub Settings > Secrets and variables > Actions
+   - Ensure secret names are exactly `EMAIL_USERNAME` and `EMAIL_PASSWORD` (case-sensitive)
+   - Use Gmail app passwords, not regular passwords
+
+2. **Email not sending**: Check EMAIL_USERNAME and EMAIL_PASSWORD environment variables
+3. **Blog not detected**: Add manual selectors to `manual_selectors.json`
+4. **Import errors**: Run `uv sync` to install dependencies
 
 ### Debug Commands
 
 ```bash
+# Test locally with environment variables
+export EMAIL_USERNAME="your-email@gmail.com"
+export EMAIL_PASSWORD="your-app-password"
+uv run python -m rss_updater.main test-email
+
 # Analyze specific blog
 uv run python -m rss_updater.main analyze --url https://problematic-blog.com
-
-# Test email configuration
-uv run python -m rss_updater.main test-email
 
 # Check storage state
 cat blog_states.json | jq .
 ```
+
+### GitHub Actions Debugging
+
+If workflows are failing, check the Actions tab in your repository:
+1. Click on the failed workflow run
+2. Click on the job name to see detailed logs
+3. Look for environment variable debug output
+4. Verify secrets are set in repository settings
 
 ## GitHub Actions Deployment
 
 ### Daily Automation Setup
 
 1. **Configure repository secrets** in GitHub Settings > Secrets and variables > Actions:
-   - `EMAIL_USERNAME` - Your email address
-   - `EMAIL_PASSWORD` - Your email app password
+   - Go to your repository on GitHub
+   - Click Settings > Secrets and variables > Actions 
+   - Click "New repository secret"
+   - Add `EMAIL_USERNAME` with your email address as the value
+   - Add `EMAIL_PASSWORD` with your Gmail app password as the value
+   - **Important:** Use Gmail app passwords, not your regular password ([Setup guide](https://support.google.com/accounts/answer/185833))
 
 2. **The workflow runs automatically** every day at 9:00 AM UTC. You can:
    - Adjust the schedule in `.github/workflows/daily-rss-check.yml`

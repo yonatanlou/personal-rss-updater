@@ -33,6 +33,10 @@ jobs:
       
     - name: Check if blog states exist, if not initialize
       run: |
+        echo "Checking environment variables..."
+        echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
+        echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
+        
         if [ ! -f blog_states.json ]; then
           echo "No blog_states.json found, running initialization..."
           uv run python -m rss_updater.main init

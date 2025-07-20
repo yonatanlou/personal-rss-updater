@@ -33,6 +33,9 @@ jobs:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
+        echo "Checking environment variables..."
+        echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
+        echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
         uv run python -m rss_updater.main init
         
     - name: Verify blog states file was created
