@@ -7,6 +7,7 @@
   - Scan for `<link rel="alternate">` tags in HTML head
   - Check common RSS endpoints (`/feed`, `/rss`, `/atom.xml`, etc.)
   - Prefer RSS feeds over web scraping when available
+  - parse also a feed xml in sites, like in https://koaning.io/feed.xml or https://harper.blog/index.xml
 - [ ] **RSS/Atom parser** implementation
   - Support RSS 1.0, RSS 2.0, and Atom formats
   - Extract title, link, description, publication date

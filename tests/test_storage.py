@@ -4,8 +4,9 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
-from rss_updater.models import Post
-from rss_updater.storage import BlogState, BlogStorage
+from rss_updater.core.models import Post
+from rss_updater.storage.blog_state import BlogState
+from rss_updater.storage.blog_storage import BlogStorage
 
 
 def test_blog_state_serialization():

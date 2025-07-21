@@ -12,10 +12,10 @@
     "description": "Posts are in h2 tags"
   },
   "Andrew Heiss's blog": {
-    "post_container": ".post",
-    "title_selector": ".post-title",
-    "link_selector": ".post-title a",
-    "description": "Academic blog layout"
+    "post_container": "div.blog-entry",
+    "title_selector": "h2",
+    "link_selector": "a",
+    "description": "Quarto blog with div.blog-entry containers"
   },
   "Nicholas Carlini": {
     "post_container": ".post",
@@ -24,16 +24,16 @@
     "description": "Research blog with h3 titles"
   },
   "Mimansa Jaiswal": {
-    "post_container": ".post",
-    "title_selector": ".post-title",
-    "link_selector": ".post-title a",
-    "description": "Academic portfolio site"
+    "post_container": "li",
+    "title_selector": "a",
+    "link_selector": "a",
+    "description": "Academic portfolio site with li post containers"
   },
   "Theia Vogel's website & blog": {
-    "post_container": "article",
+    "post_container": "article.clearfix",
     "title_selector": "h2",
-    "link_selector": "h2 a",
-    "description": "Personal blog with articles"
+    "link_selector": "a",
+    "description": "Personal blog with article.clearfix containers"
   },
   "Dividend Growth Investor": {
     "post_container": ".post",

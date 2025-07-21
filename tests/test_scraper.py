@@ -1,7 +1,7 @@
 """Tests for the scraper module."""
 
-from rss_updater.scraper import WebScraper
-from rss_updater.utils import validate_url, normalize_url, clean_text, extract_excerpt
+from rss_updater.web.scraper import WebScraper
+from rss_updater.utils.utils import validate_url, normalize_url, clean_text, extract_excerpt
 
 
 def test_url_validation():
