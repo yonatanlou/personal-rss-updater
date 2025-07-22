@@ -28,6 +28,17 @@ jobs:
     - name: Install dependencies
       run: uv sync
 
+    - name: Verify blogs.json exists
+      run: |
+        if [ -f config/app/blogs.json ]; then
+          echo "✅ Found blogs.json at config/app/blogs.json"
+        elif [ -f blogs.json ]; then
+          echo "✅ Found blogs.json at root (legacy location)"
+        else
+          echo "❌ No blogs.json found at config/app/blogs.json or root directory"
+          exit 1
+        fi
+
     - name: Initialize blog states
       env:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
