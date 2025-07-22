@@ -8,12 +8,13 @@ from .web import WebScraper
 from .storage import BlogStorage
 from .core import Post
 from .detection import SelectorDetector
+from .constants import BLOGS_CONFIG_PATH, LEGACY_BLOGS_PATH
 
 
 def load_blogs_from_json(blogs_file: Path = None) -> List[Dict[str, str]]:
     """Load blog list from JSON file."""
     if blogs_file is None:
-        blogs_file = Path("blogs.json")
+        blogs_file = BLOGS_CONFIG_PATH if BLOGS_CONFIG_PATH.exists() else LEGACY_BLOGS_PATH
 
     if not blogs_file.exists():
         raise FileNotFoundError(f"Blog list file not found: {blogs_file}")
