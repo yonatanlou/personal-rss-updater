@@ -41,7 +41,7 @@ def test_web_scraper_initialization():
     """Test WebScraper initialization."""
     scraper = WebScraper()
     assert scraper.timeout == 30
-    assert "Personal RSS Updater" in scraper.session.headers['User-Agent']
+    assert "Personal RSS Updater" in scraper.session.headers["User-Agent"]
     scraper.close()
 
 

@@ -12,7 +12,7 @@
 
 #### Phase 1: Foundation Setup
 - [ ] **Step 1**: Project Initialization - Set up modern Python project structure with uv
-- [ ] **Step 2**: Configuration Management - Create robust configuration system  
+- [ ] **Step 2**: Configuration Management - Create robust configuration system
 - [ ] **Step 3**: Data Storage Layer - Implement JSON-based persistence
 
 #### Phase 2: Web Scraping Engine
@@ -20,7 +20,7 @@
 - [ ] **Step 5**: Intelligent Selector Detection - Implement automatic blog structure detection
 - [ ] **Step 6**: Post Extraction System - Extract posts using detected/configured selectors
 
-#### Phase 3: Core Logic Implementation  
+#### Phase 3: Core Logic Implementation
 - [ ] **Step 7**: Change Detection System - Implement new post detection logic
 - [ ] **Step 8**: Email Notification System - Implement daily digest email functionality
 

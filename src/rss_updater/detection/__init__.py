@@ -3,4 +3,4 @@
 from .selector_candidate import SelectorCandidate
 from .detector import SelectorDetector
 
-__all__ = ['SelectorCandidate', 'SelectorDetector']
+__all__ = ["SelectorCandidate", "SelectorDetector"]

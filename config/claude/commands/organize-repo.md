@@ -1,4 +1,6 @@
 Reorganize this messy repository with the following structure rules:
+- make sure each function have usage, if not, remove it
+- too long function should be divided to a smaller one
 - Maximum 5 code files per folder
 - File length cannot be too long (maximum 250 lines). if it too long divide with smart logic (grouping similar functionalities together)
 - Use hierarchical tree structure (no flat organization)

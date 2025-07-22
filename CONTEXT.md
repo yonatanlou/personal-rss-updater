@@ -50,7 +50,7 @@ A Python-based blog monitoring system that automatically detects new posts acros
 
 ### State Management
 - JSON-based persistence for blog states
-- Post history tracking to prevent duplicates  
+- Post history tracking to prevent duplicates
 - Failure counting with configurable thresholds
 - Sync operations to maintain data consistency
 
@@ -99,7 +99,7 @@ uv run python -m rss_updater.main test-selector --selector <CSS>  # Test selecto
 - **Documentation**: README.md covers setup, config, and troubleshooting
 
 ## Error Handling Strategy
-- Retry logic with configurable attempts and delays  
+- Retry logic with configurable attempts and delays
 - Failure threshold tracking before marking blogs as problematic
 - Email alerts for persistent failures
 - Graceful degradation when individual blogs fail

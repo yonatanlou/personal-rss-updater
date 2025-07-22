@@ -1,0 +1,26 @@
+# Pre-commit hooks configuration (simplified - only tests for now)
+# See https://pre-commit.com for more information
+
+repos:
+  # Built-in essential hooks only
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  # Local hooks for testing only
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Run tests
+        entry: uv run python -m pytest
+        language: system
+        types: [python]
+        pass_filenames: false
+        args: [--tb=short, -v, --no-cov]
+        stages: [pre-commit]

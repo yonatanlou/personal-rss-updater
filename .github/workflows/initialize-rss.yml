@@ -8,26 +8,26 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-        
+
     - name: Install uv
       uses: astral-sh/setup-uv@v3
       with:
         version: "latest"
-        
+
     - name: Install dependencies
       run: uv sync
-      
+
     - name: Initialize blog states
       env:
         EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
@@ -37,7 +37,7 @@ jobs:
         echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
         echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
         uv run python -m rss_updater.main init
-        
+
     - name: Verify blog states file was created
       run: |
         if [ -f blog_states.json ]; then
@@ -49,12 +49,12 @@ jobs:
           echo "❌ blog_states.json was not created"
           exit 1
         fi
-        
+
     - name: Commit and push initial blog states
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        
+
         git add blog_states.json
         git commit -m "Initialize blog states - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
         git push

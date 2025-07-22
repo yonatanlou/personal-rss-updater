@@ -46,7 +46,7 @@ The RSS updater system is **fully functional** and ready for production use. All
 - ✅ **aviyehuda.com** working with manual h2 selector
 - ⚠️ **5 blogs** need manual selectors tuned:
   - Andrew Heiss's blog
-  - Theia Vogel's website & blog  
+  - Theia Vogel's website & blog
   - Nicholas Carlini
   - Mimansa Jaiswal
   - Dividend Growth Investor
@@ -83,7 +83,7 @@ uv run python -m rss_updater.main test-selector --url "https://blog.com" --selec
 ### Immediate (when user returns):
 1. **Complete Gmail setup** (5 minutes):
    - Enable 2FA on Gmail account
-   - Generate App Password  
+   - Generate App Password
    - Replace password in .env file
    - Test: `uv run python -m rss_updater.main test-email`
 
@@ -94,7 +94,7 @@ uv run python -m rss_updater.main test-selector --url "https://blog.com" --selec
 
 ### Deployment Ready:
 - **Local**: Set up cron job for daily 8 AM execution
-- **GitHub Actions**: Deploy workflow for cloud execution  
+- **GitHub Actions**: Deploy workflow for cloud execution
 - **Production**: System is ready for daily automated monitoring
 
 ## 🏆 Achievement Summary

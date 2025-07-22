@@ -84,7 +84,18 @@
 
 ## 🔧 Technical Improvements
 
-### 6. Architecture & Infrastructure
+### 6. Code Quality & Development Tools
+- [ ] **Fix linting and type checking issues**
+  - Resolve Ruff linting errors in codebase
+  - Fix MyPy type annotation issues
+  - Add proper type hints to all functions
+  - Clean up unused variables and imports
+- [ ] **Enhanced pre-commit hooks**
+  - Re-enable Black, Ruff, and MyPy in pre-commit after fixes
+  - Add more comprehensive code quality checks
+  - Configure proper type checking strictness
+
+### 7. Architecture & Infrastructure
 - [ ] **Database backend** (optional SQLite/PostgreSQL)
   - Replace JSON storage for better performance
   - Support for complex queries and reporting

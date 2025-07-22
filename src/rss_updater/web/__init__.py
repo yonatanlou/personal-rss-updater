@@ -2,4 +2,4 @@
 
 from .scraper import WebScraper
 
-__all__ = ['WebScraper']
+__all__ = ["WebScraper"]

@@ -43,7 +43,7 @@ uv pip install -e .
 2. **Set environment variables:**
    ```bash
    export EMAIL_USERNAME="your-email@gmail.com"
-   export EMAIL_PASSWORD="your-app-password" 
+   export EMAIL_PASSWORD="your-app-password"
    ```
 app password: https://support.google.com/accounts/answer/185833?hl=en
 3. **Initialize blog states:**
@@ -154,7 +154,7 @@ uv run python -m rss_updater.main test-selector --url https://example.com --sele
 src/rss_updater/
 ├── core/           # Core functionality (config, models)
 ├── detection/      # Blog post detection logic
-├── monitoring/     # Blog monitoring and diagnostics  
+├── monitoring/     # Blog monitoring and diagnostics
 ├── notification/   # Email notification system
 ├── storage/        # Data persistence layer
 ├── utils/          # Utility functions
@@ -205,7 +205,7 @@ uv run mypy src/
 
 2. **SMTP Authentication failed (535, 5.7.8 Username and Password not accepted)**:
    - **Most common cause**: Using regular password instead of app password
-   - **Solution**: 
+   - **Solution**:
      1. Enable 2FA on Gmail: [Security Settings](https://myaccount.google.com/security)
      2. Generate app password: [App Passwords](https://support.google.com/accounts/answer/185833)
      3. Use the 16-character app password as `EMAIL_PASSWORD`
@@ -245,7 +245,7 @@ If workflows are failing, check the Actions tab in your repository:
 
 1. **Configure repository secrets** in GitHub Settings > Secrets and variables > Actions:
    - Go to your repository on GitHub
-   - Click Settings > Secrets and variables > Actions 
+   - Click Settings > Secrets and variables > Actions
    - Click "New repository secret"
    - Add `EMAIL_USERNAME` with your email address as the value
    - Add `EMAIL_PASSWORD` with your Gmail app password as the value
@@ -276,7 +276,7 @@ If workflows are failing, check the Actions tab in your repository:
 2. **Set repository secrets** for email credentials
 3. **Run initialization workflow** manually once:
    - Go to Actions tab
-   - Select "Initialize RSS States" 
+   - Select "Initialize RSS States"
    - Click "Run workflow"
    - This creates and commits the initial `blog_states.json` to your repository
 4. **Daily checks will run automatically** after that
@@ -298,7 +298,7 @@ Edit the cron expression in `daily-rss-check.yml`:
 schedule:
   # Examples:
   - cron: '0 9 * * *'    # 9:00 AM UTC daily
-  - cron: '0 17 * * *'   # 5:00 PM UTC daily  
+  - cron: '0 17 * * *'   # 5:00 PM UTC daily
   - cron: '0 9 * * 1-5'  # 9:00 AM UTC weekdays only
   - cron: '0 */6 * * *'  # Every 6 hours
 ```

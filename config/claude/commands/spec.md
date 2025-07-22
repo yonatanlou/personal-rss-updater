@@ -52,7 +52,7 @@ A robust Python program that monitors blogs (both RSS and non-RSS) for new posts
 ### Blog Post Detection
 - **Method**: Generic CSS selector detection
 - **Auto-Detection**: Analyze blog structure to identify post containers
-- **Validation Workflow**: 
+- **Validation Workflow**:
   1. Automatically detect selectors
   2. Present findings to user for confirmation
   3. Save validated selectors to configuration
