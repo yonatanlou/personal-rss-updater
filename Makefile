@@ -1,6 +1,6 @@
 # Makefile for Personal RSS Updater development
 
-.PHONY: help install dev-install format lint test test-cov clean pre-commit setup-hooks
+.PHONY: help install dev-install format lint test test-cov clean pre-commit setup-hooks act-list act-init act-daily act-setup
 
 help:  ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -51,3 +51,25 @@ quality: format lint test  ## Run all quality checks (format, lint, test)
 
 # CI simulation - what will run on GitHub Actions
 ci: lint test-cov  ## Run CI checks locally
+
+# GitHub Actions local testing with act
+act-setup:  ## Set up secrets file for act testing
+	@if [ ! -f .env.secrets ]; then \
+		echo "Creating .env.secrets from template..."; \
+		cp .env.secrets.example .env.secrets; \
+		echo "Please edit .env.secrets with your actual values"; \
+	else \
+		echo ".env.secrets already exists"; \
+	fi
+
+act-list:  ## List available workflows
+	act -l
+
+act-init:  ## Test initialize-rss workflow locally
+	act workflow_dispatch -W .github/workflows/initialize-rss.yml
+
+act-daily:  ## Test daily-rss-check workflow locally
+	act workflow_dispatch -W .github/workflows/daily-rss-check.yml
+
+act-dry:  ## Dry run of workflows (no execution)
+	act -n

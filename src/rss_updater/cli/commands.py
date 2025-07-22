@@ -95,11 +95,14 @@ class CommandHandler:
         """Handle blog checking without email."""
         print("\n=== CHECK MODE (No email) ===")
         try:
+            # Load configuration
+            config = load_config()
             # Initialize monitoring
-            monitor = BlogMonitor()
+            monitor = BlogMonitor(config)
 
             # Check all blogs
-            new_posts = monitor.check_all_blogs()
+            results = monitor.check_all_blogs()
+            new_posts = results.get("new_posts", [])
 
             if new_posts:
                 print(f"\nFound {len(new_posts)} new posts:")
@@ -212,7 +215,8 @@ class CommandHandler:
             monitor = HybridBlogMonitor(config)
 
             # Run hybrid monitoring
-            new_posts = monitor.check_all_blogs()
+            results = monitor.check_all_blogs()
+            new_posts = results.get("new_posts", [])
 
             if new_posts:
                 print(f"\nFound {len(new_posts)} new posts:")
@@ -237,18 +241,31 @@ class CommandHandler:
             if self.args.use_hybrid:
                 # Use hybrid monitoring
                 monitor = HybridBlogMonitor(config)
-                new_posts = monitor.check_all_blogs()
+                results = monitor.check_all_blogs()
             else:
                 # Use traditional scraping
-                monitor = BlogMonitor()
-                new_posts = monitor.check_all_blogs()
+                monitor = BlogMonitor(config)
+                results = monitor.check_all_blogs()
 
-            # Send email if new posts found
-            if new_posts:
-                print(f"Found {len(new_posts)} new posts, sending email notification...")
+            # Extract results
+            new_posts = results.get("new_posts", [])
+            stats = results.get("stats", {})
+            failed_blogs = results.get("failed_blogs", {})
+            
+            # Create failed blogs summary
+            failed_blogs_summary = ""
+            if failed_blogs:
+                failed_blogs_summary = f"Failed blogs: {', '.join(failed_blogs.keys())}"
+
+            # Send email if new posts found or there are failures
+            if new_posts or failed_blogs:
+                if new_posts:
+                    print(f"Found {len(new_posts)} new posts, sending email notification...")
+                if failed_blogs:
+                    print(f"Found {len(failed_blogs)} failed blogs, including in notification...")
 
                 notifier = EmailNotifier(config)
-                success = notifier.send_digest(new_posts)
+                success = notifier.send_digest(new_posts, stats, failed_blogs_summary)
 
                 if success:
                     print("✅ Email digest sent successfully!")
