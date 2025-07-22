@@ -38,7 +38,7 @@ class CommandHandler:
         print("\n=== SYNC MODE ===")
         try:
             # Load config and storage
-            config = load_config()
+            load_config()  # Load config for initialization
             storage = BlogStorage()
 
             print("Syncing blog states with blogs.json configuration...")

@@ -75,8 +75,6 @@ class WebScraper:
         Returns:
             Response object or None if failed
         """
-        last_exception = None
-
         for attempt in range(retries):
             try:
                 response = self.session.get(url, timeout=self.timeout)

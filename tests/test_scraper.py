@@ -6,11 +6,11 @@ from rss_updater.utils.utils import validate_url, normalize_url, clean_text, ext
 
 def test_url_validation():
     """Test URL validation function."""
-    assert validate_url("https://example.com") == True
-    assert validate_url("http://example.com") == True
-    assert validate_url("example.com") == False
-    assert validate_url("not-a-url") == False
-    assert validate_url("") == False
+    assert validate_url("https://example.com")
+    assert validate_url("http://example.com")
+    assert not validate_url("example.com")
+    assert not validate_url("not-a-url")
+    assert not validate_url("")
 
 
 def test_url_normalization():
