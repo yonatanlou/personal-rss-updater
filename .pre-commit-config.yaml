@@ -13,6 +13,16 @@ repos:
       - id: check-added-large-files
       - id: detect-private-key
 
+  # Ruff linting and formatting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        name: ruff (linter)
+        args: [--fix]
+      - id: ruff-format
+        name: ruff (formatter)
+
   # Local hooks for testing only
   - repo: local
     hooks:
