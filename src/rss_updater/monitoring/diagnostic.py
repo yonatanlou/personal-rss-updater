@@ -15,10 +15,10 @@ def analyze_blog_structure(url: str, blog_name: str = None) -> None:
         url: The blog URL to analyze
         blog_name: Optional blog name for display
     """
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"ANALYZING: {blog_name or url}")
     print(f"URL: {url}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     with WebScraper() as scraper:
         soup = scraper.fetch_and_parse(url)
@@ -178,9 +178,9 @@ def analyze_failed_blogs() -> None:
     for blog_name, url in fallback_blogs:
         print(f"   • {blog_name}")
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("DETAILED ANALYSIS")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     for blog_name, url in fallback_blogs:
         analyze_blog_structure(url, blog_name)

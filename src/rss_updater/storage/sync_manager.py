@@ -28,7 +28,9 @@ class SyncManager:
         Returns:
             Dict with sync summary: added, removed, updated, errors
         """
-        blogs_config_path = blogs_config_path or (BLOGS_CONFIG_PATH if BLOGS_CONFIG_PATH.exists() else LEGACY_BLOGS_PATH)
+        blogs_config_path = blogs_config_path or (
+            BLOGS_CONFIG_PATH if BLOGS_CONFIG_PATH.exists() else LEGACY_BLOGS_PATH
+        )
 
         if not blogs_config_path.exists():
             raise FileNotFoundError(f"Blogs config file not found: {blogs_config_path}")

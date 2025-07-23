@@ -169,8 +169,8 @@ class FeedValidator:
         report = [
             "=== FEED HEALTH REPORT ===",
             f"Total feeds checked: {total_feeds}",
-            f"Valid feeds: {valid_feeds}/{total_feeds} ({valid_feeds/total_feeds*100:.1f}%)",
-            f"Reachable feeds: {reachable_feeds}/{total_feeds} ({reachable_feeds/total_feeds*100:.1f}%)",
+            f"Valid feeds: {valid_feeds}/{total_feeds} ({valid_feeds / total_feeds * 100:.1f}%)",
+            f"Reachable feeds: {reachable_feeds}/{total_feeds} ({reachable_feeds / total_feeds * 100:.1f}%)",
             "",
         ]
 
