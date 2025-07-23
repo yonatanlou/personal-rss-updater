@@ -251,7 +251,7 @@ class CommandHandler:
             new_posts = results.get("new_posts", [])
             stats = results.get("stats", {})
             failed_blogs = results.get("failed_blogs", {})
-            
+
             # Create failed blogs summary
             failed_blogs_summary = ""
             if failed_blogs:

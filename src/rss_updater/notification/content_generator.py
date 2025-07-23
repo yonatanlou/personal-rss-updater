@@ -127,7 +127,7 @@ class ContentGenerator:
             </div>
 
             <div class="summary">
-                <strong>Summary:</strong> {len(new_posts)} new posts from {stats.get('checked_blogs', 0)} blogs
+                <strong>Summary:</strong> {len(new_posts)} new posts from {stats.get("checked_blogs", 0)} blogs
             </div>
         """
 

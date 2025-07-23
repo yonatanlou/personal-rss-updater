@@ -281,9 +281,9 @@ class HybridBlogMonitor:
     def _load_blogs(self) -> List[Dict[str, str]]:
         """Load blog list from JSON file."""
         import json
-        from pathlib import Path
 
         from ..constants import BLOGS_CONFIG_PATH, LEGACY_BLOGS_PATH
+
         blogs_file = BLOGS_CONFIG_PATH if BLOGS_CONFIG_PATH.exists() else LEGACY_BLOGS_PATH
 
         if not blogs_file.exists():

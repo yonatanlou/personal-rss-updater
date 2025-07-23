@@ -89,7 +89,7 @@ def analyze_blog(blog_name_or_url: str):
         print(f"   Container: {selector_config.get('post_container', 'N/A')}")
         print(f"   Title: {selector_config.get('title_selector', 'N/A')}")
         print(f"   Link: {selector_config.get('link_selector', 'N/A')}")
-        
+
         # Test the manual selector
         link_selector = selector_config.get("link_selector", "")
         if link_selector:
@@ -98,7 +98,7 @@ def analyze_blog(blog_name_or_url: str):
             print(f"   Found {len(elements)} elements:")
             for i, elem in enumerate(elements[:5], 1):  # Show first 5
                 title = elem.get_text(strip=True)[:60]
-                href = elem.get('href', 'No href')
+                href = elem.get("href", "No href")
                 print(f"   {i}. {title}...")
                 print(f"      URL: {href}")
             if len(elements) > 5:
@@ -109,7 +109,7 @@ def analyze_blog(blog_name_or_url: str):
     print("🤖 AUTOMATIC DETECTION:")
     detector = SelectorDetector()
     result = detector.get_latest_post(soup, url, blog_name)
-    
+
     if result:
         print("✅ Automatic detection successful:")
         print(f"   Title: {result['title']}")
@@ -126,25 +126,32 @@ def analyze_blog(blog_name_or_url: str):
         "a[href*='post']",
         "a[href*='2024']",
         "a[href*='2025']",
-        "h1 a", "h2 a", "h3 a",
-        ".post a", ".entry a", ".article a",
-        "article a", "main a",
+        "h1 a",
+        "h2 a",
+        "h3 a",
+        ".post a",
+        ".entry a",
+        ".article a",
+        "article a",
+        "main a",
     ]
-    
+
     for selector in selectors_to_test:
         elements = soup.select(selector)
         if elements and len(elements) <= 10:  # Only show reasonable number of results
             print(f"   {selector} → {len(elements)} elements")
             for i, elem in enumerate(elements[:3], 1):  # Show first 3
                 title = elem.get_text(strip=True)[:40]
-                href = elem.get('href', '')
-                if href and not href.startswith('#'):  # Skip anchor links
+                href = elem.get("href", "")
+                if href and not href.startswith("#"):  # Skip anchor links
                     print(f"      {i}. {title}... → {href}")
 
     print("\n💡 TIPS:")
     print("   - Look for patterns in the URLs (e.g., /blog/, /posts/, year)")
     print("   - Check if there are specific classes or IDs for blog posts")
-    print("   - Test selectors with: python -m rss_updater.main test-selector --url URL --selector SELECTOR")
+    print(
+        "   - Test selectors with: python -m rss_updater.main test-selector --url URL --selector SELECTOR"
+    )
     print("   - Update manual_selectors.json with working selectors")
 
 

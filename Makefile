@@ -1,6 +1,6 @@
 # Makefile for Personal RSS Updater development
 
-.PHONY: help install dev-install format lint test test-cov clean pre-commit setup-hooks act-list act-init act-daily act-setup
+.PHONY: help install dev-install format ruff lint test test-cov clean pre-commit setup-hooks act-list act-init act-daily act-setup
 
 help:  ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -13,6 +13,10 @@ dev-install:  ## Install package with development dependencies
 
 format:  ## Format code with black
 	uv run black src/ tests/
+
+ruff:  ## Lint and format code with ruff only
+	uv run ruff check src/ tests/ debug_blog.py --fix
+	uv run ruff format src/ tests/ debug_blog.py
 
 lint:  ## Lint code with ruff and mypy
 	uv run ruff check src/ tests/ --fix
