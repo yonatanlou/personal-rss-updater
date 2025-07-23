@@ -11,12 +11,6 @@
     "link_selector": "h2 a",
     "description": "Posts are in h2 tags"
   },
-  "Andrew Heiss's blog": {
-    "post_container": "div.blog-entry",
-    "title_selector": "h2",
-    "link_selector": "a",
-    "description": "Quarto blog with div.blog-entry containers"
-  },
   "Nicholas Carlini": {
     "post_container": ".post",
     "title_selector": "h3",
@@ -28,12 +22,6 @@
     "title_selector": "a",
     "link_selector": "a",
     "description": "Academic portfolio site with li post containers"
-  },
-  "Theia Vogel's website & blog": {
-    "post_container": "article.clearfix",
-    "title_selector": "h2",
-    "link_selector": "a",
-    "description": "Personal blog with article.clearfix containers"
   },
   "Dividend Growth Investor": {
     "post_container": ".post",
@@ -52,5 +40,11 @@
     "title_selector": "h3",
     "link_selector": "h3 a",
     "description": "Substack newsletter - use h3 elements for posts"
+  },
+  "Gwern.net Newsletter": {
+    "post_container": "div",
+    "title_selector": "a",
+    "link_selector": "a[href*='/blog/']:not([href*='index'])",
+    "description": "Gwern.net changelog - get blog post links excluding index/navigation links"
   }
 }
