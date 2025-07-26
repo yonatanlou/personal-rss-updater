@@ -2,24 +2,32 @@
   "Andrew Heiss's blog": {
     "blog_name": "Andrew Heiss's blog",
     "url": "https://www.andrewheiss.com/blog/",
-    "last_post_title": "Fallback - Blog | Andrew Heiss – Andrew Heiss",
-    "last_post_url": "https://www.andrewheiss.com/blog/",
-    "last_check": "2025-07-21T09:21:17.149551",
-    "failure_count": 4,
-    "last_success": "2025-07-20T11:09:15.604682",
+    "last_post_title": "How to open a folder as a Positron project with macOS Quick Actions",
+    "last_post_url": "https://www.andrewheiss.com/blog/2025/07/22/positron-open-with-finder/index.html",
+    "last_check": "2025-07-26T15:14:37.992943",
+    "failure_count": 0,
+    "last_success": "2025-07-26T15:14:37.992947",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Theia Vogel's website & blog": {
     "blog_name": "Theia Vogel's website & blog",
     "url": "https://vgel.me/",
-    "last_post_title": "Fallback - Theia Vogel's website & blog",
-    "last_post_url": "https://vgel.me/",
-    "last_check": "2025-07-21T09:21:18.391638",
-    "failure_count": 7,
-    "last_success": "2025-07-19T15:09:53.650498",
+    "last_post_title": "Representation Engineering Mistral-7B an Acid Trip",
+    "last_post_url": "https://vgel.me/posts/representation-engineering/",
+    "last_check": "2025-07-26T15:14:37.992957",
+    "failure_count": 0,
+    "last_success": "2025-07-26T15:14:37.992958",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Lil'Log": {
     "blog_name": "Lil'Log",
@@ -30,7 +38,11 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:21:19.372899",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "the singularity is nearer": {
     "blog_name": "the singularity is nearer",
@@ -41,18 +53,26 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:21:20.557802",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Chip Huyen": {
     "blog_name": "Chip Huyen",
     "url": "https://vgel.me/posts/",
-    "last_post_title": "Representation Engineering Mistral-7B an Acid Trip",
-    "last_post_url": "https://vgel.me/posts/representation-engineering/",
-    "last_check": "2025-07-21T09:21:21.660635",
+    "last_post_title": "Common pitfalls when building generative AI applications",
+    "last_post_url": "https://huyenchip.com/2025/01/16/ai-engineering-pitfalls.html",
+    "last_check": "2025-07-26T15:14:37.992961",
     "failure_count": 0,
-    "last_success": "2025-07-21T09:21:21.660638",
+    "last_success": "2025-07-26T15:14:37.992962",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Gwern.net Newsletter": {
     "blog_name": "Gwern.net Newsletter",
@@ -62,8 +82,12 @@
     "last_check": "2025-07-21T09:21:22.657136",
     "failure_count": 3,
     "last_success": "2025-07-20T10:17:35.528819",
-    "last_reminder_sent": null,
-    "is_problematic": false
+    "last_reminder_sent": "2025-07-26T15:14:14.683987",
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Jay Alammar": {
     "blog_name": "Jay Alammar",
@@ -73,41 +97,57 @@
     "last_check": "2025-07-21T09:21:23.927032",
     "failure_count": 4,
     "last_success": "2025-07-20T08:45:37.604427",
-    "last_reminder_sent": null,
-    "is_problematic": true
+    "last_reminder_sent": "2025-07-26T15:14:14.683999",
+    "is_problematic": true,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Yonatan Lourie": {
     "blog_name": "Yonatan Lourie",
     "url": "https://yonatanlou.github.io/",
     "last_post_title": "Unsupervised text clustering using GNN (Graph Auto Encoder)",
     "last_post_url": "https://yonatanlou.github.io/blog/unsupervised-text-clustering-gnn/unsupervised-gae-clustering/",
-    "last_check": "2025-07-21T09:21:25.054442",
-    "failure_count": 0,
+    "last_check": "2025-07-26T15:14:22.313054",
+    "failure_count": 1,
     "last_success": "2025-07-21T09:21:25.054445",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Math ∩ Programming": {
     "blog_name": "Math ∩ Programming",
     "url": "https://www.jeremykun.com/",
-    "last_post_title": "Frequently Asked Questions about FHE",
-    "last_post_url": "https://www.jeremykun.com/frequently-asked-questions-about-fhe/",
-    "last_check": "2025-07-21T09:21:26.209174",
+    "last_post_title": "Featured Posts",
+    "last_post_url": "https://www.jeremykun.com/2022/03/16/my-next-book-will-be-practical-math-for-programmers/",
+    "last_check": "2025-07-26T15:14:37.992965",
     "failure_count": 0,
-    "last_success": "2025-07-21T09:21:26.209177",
+    "last_success": "2025-07-26T15:14:37.992965",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Hamel's Blog": {
     "blog_name": "Hamel's Blog",
     "url": "https://hamel.dev/#blog",
-    "last_post_title": "💼 Work With Me",
-    "last_post_url": "https://hamel.dev/#blog",
-    "last_check": "2025-07-21T09:21:27.551942",
+    "last_post_title": "On this page",
+    "last_post_url": "https://hamel.dev/#work-with-me",
+    "last_check": "2025-07-26T15:14:37.992969",
     "failure_count": 0,
-    "last_success": "2025-07-21T09:21:27.551945",
+    "last_success": "2025-07-26T15:14:37.992969",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Statistical Odds & Ends": {
     "blog_name": "Statistical Odds & Ends",
@@ -118,18 +158,26 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:21:28.797712",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Jascha's blog": {
     "blog_name": "Jascha's blog",
     "url": "https://sohl-dickstein.github.io/",
     "last_post_title": "Neural network training makes beautiful fractals",
     "last_post_url": "https://sohl-dickstein.github.io/2024/02/12/fractal.html",
-    "last_check": "2025-07-21T09:21:29.685102",
-    "failure_count": 0,
+    "last_check": "2025-07-26T15:14:26.788899",
+    "failure_count": 1,
     "last_success": "2025-07-21T09:21:29.685105",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Vincent's Blog": {
     "blog_name": "Vincent's Blog",
@@ -139,8 +187,12 @@
     "last_check": "2025-07-21T09:21:30.806072",
     "failure_count": 5,
     "last_success": "2025-07-20T11:09:16.568192",
-    "last_reminder_sent": null,
-    "is_problematic": false
+    "last_reminder_sent": "2025-07-26T15:14:14.684001",
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Nicholas Carlini": {
     "blog_name": "Nicholas Carlini",
@@ -150,30 +202,42 @@
     "last_check": "2025-07-21T09:21:32.119218",
     "failure_count": 7,
     "last_success": "2025-07-19T15:10:19.364942",
-    "last_reminder_sent": null,
-    "is_problematic": false
+    "last_reminder_sent": "2025-07-26T15:14:14.684003",
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Mimansa Jaiswal": {
     "blog_name": "Mimansa Jaiswal",
     "url": "https://mimansajaiswal.github.io/collections/blurbs/",
-    "last_post_title": "Fallback - Blurbs • Mimansa Jaiswal",
-    "last_post_url": "https://mimansajaiswal.github.io/collections/blurbs/",
-    "last_check": "2025-07-21T09:21:33.247357",
-    "failure_count": 5,
-    "last_success": "2025-07-20T11:09:17.691753",
+    "last_post_title": "Recraft ai for Presentation Graphics",
+    "last_post_url": "https://mimansajaiswal.github.io/posts/recraft-ai-for-presentation-graphics/",
+    "last_check": "2025-07-26T15:14:37.992973",
+    "failure_count": 0,
+    "last_success": "2025-07-26T15:14:37.992973",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "near.blog": {
     "blog_name": "near.blog",
     "url": "https://near.blog/",
     "last_post_title": "auren.app",
     "last_post_url": "https://near.blog/",
-    "last_check": "2025-07-21T09:21:35.149602",
-    "failure_count": 0,
+    "last_check": "2025-07-26T15:14:29.773061",
+    "failure_count": 1,
     "last_success": "2025-07-21T09:21:35.149606",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "r y x, r": {
     "blog_name": "r y x, r",
@@ -184,29 +248,41 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:21:36.256911",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "ezyang's blog": {
     "blog_name": "ezyang's blog",
-    "url": "https://blog.ezyang.com/",
+    "url": "https.blog.ezyang.com/",
     "last_post_title": "Vibe coding case study: ScubaDuck",
     "last_post_url": "https://blog.ezyang.com/2025/06/vibe-coding-case-study-scubaduck/",
-    "last_check": "2025-07-21T09:22:18.010184",
-    "failure_count": 0,
+    "last_check": "2025-07-26T15:14:31.801471",
+    "failure_count": 1,
     "last_success": "2025-07-21T09:22:18.010187",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Julia Evans": {
     "blog_name": "Julia Evans",
     "url": "https://jvns.ca/",
-    "last_post_title": "Julia Evans",
-    "last_post_url": "https://jvns.ca/",
-    "last_check": "2025-07-21T09:22:19.279000",
+    "last_post_title": "Most recent 10 posts",
+    "last_post_url": "https://jvns.ca/#uncategorized",
+    "last_check": "2025-07-26T15:14:37.992976",
     "failure_count": 0,
-    "last_success": "2025-07-21T09:22:19.279003",
+    "last_success": "2025-07-26T15:14:37.992977",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "aviyehuda.com": {
     "blog_name": "aviyehuda.com",
@@ -217,18 +293,26 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:22:20.253407",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Dividend Growth Investor": {
     "blog_name": "Dividend Growth Investor",
     "url": "https://www.dividendgrowthinvestor.com/",
-    "last_post_title": "Seven Dividend Growth Stocks Raising Dividends Last Week",
-    "last_post_url": "https://www.dividendgrowthinvestor.com/2025/07/seven-dividend-growth-stocks-raising.html",
-    "last_check": "2025-07-21T09:22:21.482858",
+    "last_post_title": "The 10 largest Dividend Growth Companies in the US",
+    "last_post_url": "https://www.dividendgrowthinvestor.com/2025/07/the-10-largest-dividend-growth.html",
+    "last_check": "2025-07-26T15:14:37.992982",
     "failure_count": 0,
-    "last_success": "2025-07-21T09:22:21.482862",
+    "last_success": "2025-07-26T15:14:37.992982",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Irtiza Hafiz Blog": {
     "blog_name": "Irtiza Hafiz Blog",
@@ -239,7 +323,11 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:22:22.841864",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Harper Reed's Blog": {
     "blog_name": "Harper Reed's Blog",
@@ -249,8 +337,12 @@
     "last_check": "2025-07-21T09:22:23.922493",
     "failure_count": 5,
     "last_success": "2025-07-20T11:09:18.754998",
-    "last_reminder_sent": null,
-    "is_problematic": false
+    "last_reminder_sent": "2025-07-26T15:14:14.684007",
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   },
   "Simply Statistics": {
     "blog_name": "Simply Statistics",
@@ -261,6 +353,10 @@
     "failure_count": 0,
     "last_success": "2025-07-21T09:21:16.037498",
     "last_reminder_sent": null,
-    "is_problematic": false
+    "is_problematic": false,
+    "feed_url": null,
+    "feed_etag": null,
+    "feed_modified": null,
+    "last_post_date": null
   }
 }
