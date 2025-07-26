@@ -252,10 +252,13 @@ class CommandHandler:
             stats = results.get("stats", {})
             failed_blogs = results.get("failed_blogs", {})
 
-            # Create failed blogs summary
+            # Create failed blogs summary with clickable links
             failed_blogs_summary = ""
             if failed_blogs:
-                failed_blogs_summary = f"Failed blogs: {', '.join(failed_blogs.keys())}"
+                blog_links = []
+                for blog_name, blog_state in failed_blogs.items():
+                    blog_links.append(f"{blog_name}: {blog_state.url}")
+                failed_blogs_summary = f"Failed blogs:\n{chr(10).join(blog_links)}"
 
             # Send email if new posts found or there are failures
             if new_posts or failed_blogs:

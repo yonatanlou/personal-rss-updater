@@ -91,6 +91,11 @@ class PostExtractor:
                 if title_elem:
                     title = clean_text(title_elem.get_text())
 
+                    # Clean up titles that contain year markers and extra content
+                    if title and "202" in title:
+                        # Extract just the title part before the year
+                        title = title.split("202")[0].strip()
+
             # Extract URL
             post_url = base_url  # Default to base URL
             if link_selector:

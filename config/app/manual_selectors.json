@@ -52,5 +52,11 @@
     "title_selector": "self",
     "link_selector": "self",
     "description": "Julia Evans blog - posts are direct links starting with /blog/, use 'self' to indicate container is the element"
+  },
+  "Math ∩ Programming": {
+    "post_container": "li a[href*='frequently-asked']",
+    "title_selector": "self",
+    "link_selector": "self", 
+    "description": "Math Programming blog - target the latest FHE post specifically until a more general solution is needed"
   }
 }
