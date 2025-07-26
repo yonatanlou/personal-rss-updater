@@ -167,3 +167,4 @@ cython_debug/
 .env
 .env.secrets
 .actrc
+.CLAUDE.md

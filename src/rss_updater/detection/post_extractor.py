@@ -76,13 +76,17 @@ class PostExtractor:
             # Extract title
             title = None
             if title_selector:
-                title_elem = latest_container.select_one(title_selector)
-                if not title_elem:
-                    # Try title selector on the container itself
-                    if latest_container.name == title_selector or any(
-                        cls in title_selector for cls in latest_container.get("class", [])
-                    ):
-                        title_elem = latest_container
+                if title_selector == "self":
+                    # Use the container itself as the title element
+                    title_elem = latest_container
+                else:
+                    title_elem = latest_container.select_one(title_selector)
+                    if not title_elem:
+                        # Try title selector on the container itself
+                        if latest_container.name == title_selector or any(
+                            cls in title_selector for cls in latest_container.get("class", [])
+                        ):
+                            title_elem = latest_container
 
                 if title_elem:
                     title = clean_text(title_elem.get_text())
@@ -90,7 +94,12 @@ class PostExtractor:
             # Extract URL
             post_url = base_url  # Default to base URL
             if link_selector:
-                link_elem = latest_container.select_one(link_selector)
+                if link_selector == "self":
+                    # Use the container itself as the link element
+                    link_elem = latest_container
+                else:
+                    link_elem = latest_container.select_one(link_selector)
+
                 if link_elem and link_elem.get("href"):
                     post_url = resolve_relative_url(base_url, link_elem.get("href"))
 

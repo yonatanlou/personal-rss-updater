@@ -46,5 +46,11 @@
     "title_selector": "a",
     "link_selector": "a[href*='/blog/']:not([href*='index'])",
     "description": "Gwern.net changelog - get blog post links excluding index/navigation links"
+  },
+  "Julia Evans": {
+    "post_container": "a[href^='/blog/']",
+    "title_selector": "self",
+    "link_selector": "self",
+    "description": "Julia Evans blog - posts are direct links starting with /blog/, use 'self' to indicate container is the element"
   }
 }
