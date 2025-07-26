@@ -117,8 +117,20 @@ class EmailNotifier:
         """Send a single post notification."""
         try:
             subject = f"{post.blog_name}: {post.title}"
-            html_content = f'<h1>{post.title}</h1><p><a href="{post.url}">Read more</a></p>'
-            text_content = f"{post.title}\n{post.url}"
+
+            # Handle posts with content (like consolidated reminders)
+            if hasattr(post, "content") and post.content:
+                # Convert newlines to <br> for HTML and add proper formatting
+                html_content_body = post.content.replace("\n", "<br>")
+                html_content = (
+                    f'<h1>{post.title}</h1><div style="margin: 20px 0;">{html_content_body}</div>'
+                )
+                text_content = f"{post.title}\n\n{post.content}"
+            else:
+                # Standard single post format
+                html_content = f'<h1>{post.title}</h1><p><a href="{post.url}">Read more</a></p>'
+                text_content = f"{post.title}\n{post.url}"
+
             success = self.email_sender.send_email(subject, html_content, text_content)
 
             if success:

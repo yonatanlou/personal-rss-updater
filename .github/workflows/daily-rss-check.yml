@@ -3,7 +3,7 @@ name: Daily RSS Check
 on:
   schedule:
     # Run daily at 9:00 AM UTC (adjust timezone as needed)
-    - cron: '0 9 * * *'
+    - cron: '0 9 * * 5'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -56,8 +56,8 @@ jobs:
         echo "EMAIL_USERNAME is set: $([[ -n "$EMAIL_USERNAME" ]] && echo "yes" || echo "no")"
         echo "EMAIL_PASSWORD is set: $([[ -n "$EMAIL_PASSWORD" ]] && echo "yes" || echo "no")"
 
-        if [ ! -f blog_states.json ]; then
-          echo "No blog_states.json found, running initialization..."
+        if [ ! -f data/blog_states.json ]; then
+          echo "No data/blog_states.json found, running initialization..."
           uv run python -m rss_updater.main init
         else
           echo "Found existing blog_states.json"
@@ -77,8 +77,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-        if [ -f blog_states.json ]; then
-          git add blog_states.json
+        if [ -f data/blog_states.json ]; then
+          git add data/blog_states.json
 
           if git diff --staged --quiet; then
             echo "No changes to blog_states.json"
@@ -88,5 +88,5 @@ jobs:
             echo "✅ Blog states updated and pushed"
           fi
         else
-          echo "❌ blog_states.json not found"
+          echo "❌ data/blog_states.json not found"
         fi
