@@ -12,6 +12,9 @@ from ..storage import BlogStorage
 from ..utils import clean_text
 
 
+from ..notification.reminder import send_reminder_for_feed_blogs
+
+
 class BlogMonitor:
     """Orchestrates checking for changes across all blogs."""
 
@@ -42,10 +45,16 @@ class BlogMonitor:
         blogs = self._load_blogs()
         self.stats["total_blogs"] = len(blogs)
 
-        print(f"Checking {len(blogs)} blogs for new posts...")
+        # Handle feed-based blogs
+        send_reminder_for_feed_blogs(self.config, self.storage, blogs)
+
+        # Filter for scrape-based blogs
+        scrape_blogs = [b for b in blogs if b.get("monitoring_strategy", "scrape") == "scrape"]
+
+        print(f"Checking {len(scrape_blogs)} blogs for new posts...")
 
         with WebScraper(user_agent=self.config.user_agent) as scraper:
-            for i, blog in enumerate(blogs, 1):
+            for i, blog in enumerate(scrape_blogs, 1):
                 blog_name = blog["name"]
                 blog_url = blog["url"]
 
@@ -88,6 +97,21 @@ class BlogMonitor:
 
         return results
 
+    def mark_posts_as_notified(self, new_posts: List[Post]) -> None:
+        """
+        Mark new posts as successfully notified by updating storage.
+
+        This should only be called after email notification succeeds.
+
+        Args:
+            new_posts: List of posts that were successfully emailed
+        """
+        for post in new_posts:
+            self.storage.update_latest_post(post.blog_name, post)
+
+        # Save the updated states to disk
+        self.storage.save()
+
     def check_blog(self, scraper: WebScraper, blog_name: str, blog_url: str) -> Optional[Post]:
         """
         Check a single blog for new posts.
@@ -122,10 +146,7 @@ class BlogMonitor:
         # Check if this is a new post
         is_new_post = self._is_new_post(latest_post, current_state)
 
-        # Update storage with latest post info
-        self.storage.update_latest_post(blog_name, latest_post)
-
-        # Reset failure count on successful check
+        # Only reset failure count on successful check (don't update latest post yet)
         self.storage.reset_failure_count(blog_name)
 
         return latest_post if is_new_post else None

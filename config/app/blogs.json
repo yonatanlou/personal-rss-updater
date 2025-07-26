@@ -1,100 +1,124 @@
 [
   {
     "name": "Simply Statistics",
-    "url": "https://simplystatistics.org/"
+    "url": "https://simplystatistics.org/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Andrew Heiss's blog",
-    "url": "https://www.andrewheiss.com/blog/"
+    "url": "https://www.andrewheiss.com/blog/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Theia Vogel's website & blog",
-    "url": "https://vgel.me/posts/"
+    "url": "https://vgel.me/posts/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Lil'Log",
-    "url": "https://lilianweng.github.io/"
+    "url": "https://lilianweng.github.io/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "the singularity is nearer",
-    "url": "https://geohot.github.io/blog/"
+    "url": "https://geohot.github.io/blog/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Chip Huyen",
-    "url": "https://huyenchip.com/blog/"
+    "url": "https://huyenchip.com/blog/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Gwern.net Newsletter",
-    "url": "https://gwern.net/changelog"
+    "url": "https://gwern.net/changelog",
+    "monitoring_strategy": "feed"
   },
   {
     "name": "Jay Alammar",
-    "url": "https://newsletter.languagemodels.co/"
+    "url": "https://newsletter.languagemodels.co/",
+    "monitoring_strategy": "feed"
   },
   {
     "name": "Yonatan Lourie",
-    "url": "https://yonatanlou.github.io/"
+    "url": "https://yonatanlou.github.io/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Math ∩ Programming",
-    "url": "https://www.jeremykun.com/"
+    "url": "https://www.jeremykun.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Hamel's Blog",
-    "url": "https://hamel.dev/#blog"
+    "url": "https://hamel.dev/#blog",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Statistical Odds & Ends",
-    "url": "https://statisticaloddsandends.wordpress.com/"
+    "url": "https://statisticaloddsandends.wordpress.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Jascha's blog",
-    "url": "https://sohl-dickstein.github.io/"
+    "url": "https://sohl-dickstein.github.io/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Vincent's Blog",
-    "url": "https://koaning.io/feed.xml"
+    "url": "https://koaning.io/feed.xml",
+    "monitoring_strategy": "feed"
   },
   {
     "name": "Nicholas Carlini",
-    "url": "https://nicholas.carlini.com/writing/"
+    "url": "https://nicholas.carlini.com/writing/",
+    "monitoring_strategy": "feed"
   },
   {
     "name": "Mimansa Jaiswal",
-    "url": "https://mimansajaiswal.github.io/collections/blurbs/"
+    "url": "https://mimansajaiswal.github.io/collections/blurbs/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "near.blog",
-    "url": "https://near.blog/"
+    "url": "https://near.blog/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "r y x, r",
-    "url": "https://ryxcommar.com/"
+    "url": "https://ryxcommar.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "ezyang's blog",
-    "url": "https://blog.ezyang.com/"
+    "url": "https.blog.ezyang.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Julia Evans",
-    "url": "https://jvns.ca/"
+    "url": "https://jvns.ca/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "aviyehuda.com",
-    "url": "https://aviyehuda.com/"
+    "url": "https://aviyehuda.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Dividend Growth Investor",
-    "url": "https://www.dividendgrowthinvestor.com/"
+    "url": "https://www.dividendgrowthinvestor.com/",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Irtiza Hafiz Blog",
     "url": "https://irtizahafiz.com/",
-    "description": "Irtiza Hafiz is a software engineer (YELP)  who writes about technology, data science, and software development."
+    "description": "Irtiza Hafiz is a software engineer (YELP)  who writes about technology, data science, and software development.",
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Harper Reed's Blog",
     "url": "https://harper.blog/index.xml",
-    "description": "Harper Reed is a technologist and entrepreneur who writes about technology, startups, and the future of ."
+    "description": "Harper Reed is a technologist and entrepreneur who writes about technology, startups, and the future of .",
+    "monitoring_strategy": "feed"
   }
 ]

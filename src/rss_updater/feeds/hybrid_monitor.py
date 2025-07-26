@@ -137,8 +137,7 @@ class HybridBlogMonitor:
         is_new = self._is_new_post(latest_post, current_state, method="rss")
 
         if is_new:
-            # Update storage with RSS-specific caching info
-            self.storage.update_latest_post(blog_name, latest_post)
+            # Update RSS-specific caching info only (don't update latest post yet)
             self._update_feed_cache_info(blog_name, feed)
             self.storage.reset_failure_count(blog_name)
             return latest_post
@@ -169,7 +168,7 @@ class HybridBlogMonitor:
         is_new = self._is_new_post(latest_post, current_state, method="scraping")
 
         if is_new:
-            self.storage.update_latest_post(blog_name, latest_post)
+            # Only reset failure count (don't update latest post yet)
             self.storage.reset_failure_count(blog_name)
             return latest_post
 
@@ -277,6 +276,21 @@ class HybridBlogMonitor:
             "stats": self.stats,
             "failed_blogs": self.storage.get_failed_blogs(self.config.failure_threshold),
         }
+
+    def mark_posts_as_notified(self, new_posts: List[Post]) -> None:
+        """
+        Mark new posts as successfully notified by updating storage.
+
+        This should only be called after email notification succeeds.
+
+        Args:
+            new_posts: List of posts that were successfully emailed
+        """
+        for post in new_posts:
+            self.storage.update_latest_post(post.blog_name, post)
+
+        # Save the updated states to disk
+        self.storage.save()
 
     def _load_blogs(self) -> List[Dict[str, str]]:
         """Load blog list from JSON file."""

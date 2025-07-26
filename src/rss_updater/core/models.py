@@ -68,6 +68,7 @@ class Blog:
     url: str
     selectors: Dict[str, str]
     enabled: bool = True
+    monitoring_strategy: str = "scrape"
 
     def to_dict(self) -> Dict:
         """Convert blog to dictionary for JSON serialization."""
@@ -76,6 +77,7 @@ class Blog:
             "url": self.url,
             "selectors": self.selectors,
             "enabled": self.enabled,
+            "monitoring_strategy": self.monitoring_strategy,
         }
 
     @classmethod
@@ -86,4 +88,5 @@ class Blog:
             url=data["url"],
             selectors=data.get("selectors", {}),
             enabled=data.get("enabled", True),
+            monitoring_strategy=data.get("monitoring_strategy", "scrape"),
         )

@@ -269,8 +269,13 @@ class CommandHandler:
 
                 if success:
                     print("✅ Email digest sent successfully!")
+                    # Only mark posts as notified after successful email
+                    if new_posts:
+                        monitor.mark_posts_as_notified(new_posts)
+                        print(f"✅ Marked {len(new_posts)} posts as notified in storage")
                 else:
                     print("❌ Failed to send email digest")
+                    print("⚠️  Posts remain unmarked in storage for retry on next run")
                     sys.exit(1)
             else:
                 print("No new posts found. No email sent.")

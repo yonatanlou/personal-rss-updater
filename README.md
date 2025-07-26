@@ -1,310 +1,125 @@
 # Personal RSS Updater
 
-[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python](httpshttps://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![GitHub Actions](https://github.com/yonatanlou/personal-rss-updater/workflows/Daily%20RSS%20Check/badge.svg)](https://github.com/yonatanlou/personal-rss-updater/actions)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yonatanlou/personal-rss-updater/graphs/commit-activity)
 
-A robust Python program that monitors blogs for new posts and sends daily email digest notifications. Uses intelligent web scraping to support both RSS and non-RSS blogs.
+A robust Python program that monitors blogs for new posts and sends daily email digest notifications. It uses intelligent web scraping to support both RSS and non-RSS blogs.
 
 ## Features
 
-- **Universal blog monitoring** - Supports both RSS feeds and regular websites
-- **Intelligent selector detection** - Automatically detects blog post structures
-- **Manual selector overrides** - Configure custom selectors for problematic blogs
-- **Daily email digest** - Beautiful HTML and plain text notifications
-- **Failure tracking** - Monitors blog health and sends alerts for persistent issues
-- **Bi-weekly reminders** - Notifications for blogs needing attention
-- **Modern Python setup** - Uses uv for dependency management
-- **Modular architecture** - Clean, organized codebase with proper separation of concerns
+- Universal blog monitoring (RSS and non-RSS)
+- Intelligent, automatic post detection
+- Dual monitoring modes (scrape/feed) for flexible handling
+- Daily email digests (HTML & text)
+- Failure tracking and bi-weekly reminders for problematic blogs
+- Modern Python setup using `uv`
 
-## Installation
+## Setup and Quick Start
 
-This project uses [uv](https://github.com/astral-sh/uv) for dependency management.
+1.  **Install Dependencies:**
+    ```bash
+    uv sync
+    ```
 
-```bash
-# Install dependencies
-uv sync
+2.  **Configure:**
+    - Copy and edit the configuration file: `cp config.yaml.example config.yaml`
+    - Set environment variables for your email credentials:
+      ```bash
+      export EMAIL_USERNAME="your-email@gmail.com"
+      export EMAIL_PASSWORD="your-app-password" 
+      # Use a Google App Password: https://support.google.com/accounts/answer/185833
+      ```
 
-# Install in development mode
-uv pip install -e .
-```
+3.  **Initialize:**
+    This command marks all current posts as "read."
+    ```bash
+    uv run python -m rss_updater.main init
+    ```
 
-## Quick Start
-
-1. **Set up configuration:**
-   ```bash
-   # Copy example config and customize
-   cp config.yaml.example config.yaml
-   ```
-
-2. **Set environment variables:**
-   ```bash
-   export EMAIL_USERNAME="your-email@gmail.com"
-   export EMAIL_PASSWORD="your-app-password"
-   ```
-app password: https://support.google.com/accounts/answer/185833?hl=en
-3. **Initialize blog states:**
-   ```bash
-   uv run python -m rss_updater.main init
-   ```
-
-4. **Test email configuration:**
-   ```bash
-   uv run python -m rss_updater.main test-email
-   ```
-
-5. **Run monitoring:**
-   ```bash
-   uv run python -m rss_updater.main
-   ```
+4.  **Run Monitoring:**
+    ```bash
+    uv run python -m rss_updater.main
+    ```
 
 ## Configuration
 
-### config.yaml
+### `config.yaml`
 
-```yaml
-email:
-  smtp_server: smtp.gmail.com    # SMTP server
-  smtp_port: 587                 # SMTP port
-  recipient: your@email.com      # Email recipient
+- `email`: SMTP server, port, and recipient.
+- `retry_count`: Retries for failed requests.
+- `failure_threshold`: Number of failures before a blog is marked as problematic.
 
-retry_count: 3                   # Number of retries for failed requests
-failure_threshold: 3             # Failures before marking blog as problematic
-user_agent: "Mozilla/5.0 (Personal RSS Updater)"  # User agent string
-request_delay: 1.0              # Delay between requests (seconds)
-```
+### `blogs.json`
 
-### blogs.json
-
-Add blogs to monitor in `blogs.json`:
+List the blogs you want to monitor. The `monitoring_strategy` field is key:
+- `"scrape"` (default): The tool will actively scrape the site to find new posts.
+- `"feed"`: The tool will not scrape the site. Instead, it will send you a reminder every two weeks to check the blog manually. This is useful for blogs that are difficult to scrape or update infrequently.
 
 ```json
 [
   {
-    "name": "Blog Name",
-    "url": "https://example.com/blog/",
-    "description": "Optional description"
+    "name": "Example Blog (Scrape)",
+    "url": "https://example.com/blog",
+    "monitoring_strategy": "scrape"
+  },
+  {
+    "name": "Gwern.net Newsletter (Feed)",
+    "url": "https://gwern.net/changelog",
+    "monitoring_strategy": "feed"
   }
 ]
 ```
 
+### `manual_selectors.json` (Optional)
 
+For blogs where automatic detection fails, you can specify manual CSS selectors.
 
-### Manual Selectors (manual_selectors.json)
-
-For blogs that automatic detection can't handle:
-
-```json
-{
-  "example.com": {
-    "post_container": ".post-item",
-    "title_selector": "h2.title",
-    "link_selector": "a.permalink"
-  }
-}
-```
-
-## Commands
-
-### Core Commands
+## Usage
 
 ```bash
-# Run main monitoring loop
+# Run the main monitoring loop
 uv run python -m rss_updater.main
 
-# Initialize blog states (mark current posts as read)
+# Initialize blog states (run once at setup)
 uv run python -m rss_updater.main init
 
-# Sync blog states with blogs.json configuration
-uv run python -m rss_updater.main sync
-
-# Check blogs without sending email
-uv run python -m rss_updater.main check
-
-# Send test email
+# Send a test email to verify setup
 uv run python -m rss_updater.main test-email
+
+# Analyze a blog's structure for debugging
+uv run python -m rss_updater.main analyze --url https://example.com
 ```
 
-### Analysis Commands
+## GitHub Actions for Automation
 
-```bash
-# Analyze failed blogs
-uv run python -m rss_updater.main analyze
+This repository includes a GitHub Actions workflow to run the monitor daily.
 
-# Analyze specific blog structure
-uv run python -m rss_updater.main analyze --url https://example.com --blog-name "Example Blog"
+1.  **Add Repository Secrets:**
+    In your GitHub repository, go to `Settings > Secrets and variables > Actions` and add:
+    - `EMAIL_USERNAME`: Your email address.
+    - `EMAIL_PASSWORD`: Your email app password.
 
-# Test manual selector
-uv run python -m rss_updater.main test-selector --url https://example.com --selector ".post-item"
-```
+2.  **Run Initialization Workflow:**
+    The first time, you need to manually run the "Initialize RSS States" workflow from the Actions tab on GitHub. This will create and commit the initial `blog_states.json`.
 
-### Command Options
-
-- `--mark-as-read` - Mark current posts as already read during init (default: true)
-- `--url` - Specify URL for analysis commands
-- `--selector` - CSS selector to test
-- `--blog-name` - Blog name for analysis
-
-## Project Structure
-
-```
-src/rss_updater/
-├── core/           # Core functionality (config, models)
-├── detection/      # Blog post detection logic
-├── monitoring/     # Blog monitoring and diagnostics
-├── notification/   # Email notification system
-├── storage/        # Data persistence layer
-├── utils/          # Utility functions
-├── web/           # Web scraping functionality
-├── main.py        # Main entry point
-└── initializer.py # Blog initialization
-```
+The `daily-rss-check.yml` workflow will then run automatically every day, check for new posts, and commit the updated state file.
 
 ## Development
 
 ```bash
-# Install development dependencies
+# Install dev dependencies
 uv sync --group dev
 
 # Run tests
 uv run pytest
 
-# Format code
-uv run black src/ tests/
-
-# Lint code
-uv run ruff check src/ tests/
-
-# Type checking
-uv run mypy src/
+# Format and lint
+uv run black .
+uv run ruff check .
 ```
-
-## How It Works
-
-1. **Blog Discovery**: Reads blog list from `blogs.json`
-2. **Intelligent Detection**: Automatically detects blog post selectors using:
-   - Common CSS patterns (`.post`, `.entry`, `.article`)
-   - Structural analysis (repeated elements)
-   - Link analysis (internal links with content)
-3. **Manual Overrides**: Falls back to manual selectors when automatic detection fails
-4. **State Tracking**: Maintains persistent state in `blog_states.json`
-5. **Change Detection**: Compares current posts with stored state
-6. **Email Notifications**: Sends digest emails for new posts and failure alerts
-
-## Troubleshooting
-
-### Common Issues
-
-1. **GitHub Actions failing with "EMAIL_USERNAME environment variable not set"**:
-   - Check that repository secrets are set correctly in GitHub Settings > Secrets and variables > Actions
-   - Ensure secret names are exactly `EMAIL_USERNAME` and `EMAIL_PASSWORD` (case-sensitive)
-   - Use Gmail app passwords, not regular passwords
-
-2. **SMTP Authentication failed (535, 5.7.8 Username and Password not accepted)**:
-   - **Most common cause**: Using regular password instead of app password
-   - **Solution**:
-     1. Enable 2FA on Gmail: [Security Settings](https://myaccount.google.com/security)
-     2. Generate app password: [App Passwords](https://support.google.com/accounts/answer/185833)
-     3. Use the 16-character app password as `EMAIL_PASSWORD`
-     4. Try both username formats: `yonatanlou@gmail.com` or just `yonatanlou`
-   - **Alternative**: Enable "Less secure app access" (not recommended)
-
-3. **Email not sending**: Check EMAIL_USERNAME and EMAIL_PASSWORD environment variables
-4. **Blog not detected**: Add manual selectors to `manual_selectors.json`
-5. **Import errors**: Run `uv sync` to install dependencies
-
-### Debug Commands
-
-```bash
-# Test locally with environment variables
-export EMAIL_USERNAME="your-email@gmail.com"
-export EMAIL_PASSWORD="your-app-password"
-uv run python -m rss_updater.main test-email
-
-# Analyze specific blog
-uv run python -m rss_updater.main analyze --url https://problematic-blog.com
-
-# Check storage state
-cat blog_states.json | jq .
-```
-
-### GitHub Actions Debugging
-
-If workflows are failing, check the Actions tab in your repository:
-1. Click on the failed workflow run
-2. Click on the job name to see detailed logs
-3. Look for environment variable debug output
-4. Verify secrets are set in repository settings
-
-## GitHub Actions Deployment
-
-### Daily Automation Setup
-
-1. **Configure repository secrets** in GitHub Settings > Secrets and variables > Actions:
-   - Go to your repository on GitHub
-   - Click Settings > Secrets and variables > Actions
-   - Click "New repository secret"
-   - Add `EMAIL_USERNAME` with your email address as the value
-   - Add `EMAIL_PASSWORD` with your Gmail app password as the value
-   - **Important:** Use Gmail app passwords, not your regular password ([Setup guide](https://support.google.com/accounts/answer/185833))
-
-2. **The workflow runs automatically** every day at 9:00 AM UTC. You can:
-   - Adjust the schedule in `.github/workflows/daily-rss-check.yml`
-   - Trigger manually from GitHub Actions tab
-   - View logs and artifacts from each run
-
-### Available Workflows
-
-- **Daily RSS Check** (`.github/workflows/daily-rss-check.yml`)
-  - Runs automatically daily at 9:00 AM UTC
-  - Can be triggered manually
-  - Auto-initializes if `blog_states.json` doesn't exist
-  - Commits and pushes updated states to repository
-
-- **Initialize RSS States** (`.github/workflows/initialize-rss.yml`)
-  - Manual trigger only
-  - Sets up initial blog states
-  - Marks current posts as already read
-  - Commits initial `blog_states.json` to repository
-
-### First-Time Setup
-
-1. **Push to GitHub** with the workflow files
-2. **Set repository secrets** for email credentials
-3. **Run initialization workflow** manually once:
-   - Go to Actions tab
-   - Select "Initialize RSS States"
-   - Click "Run workflow"
-   - This creates and commits the initial `blog_states.json` to your repository
-4. **Daily checks will run automatically** after that
-
-### How State Persistence Works
-
-The workflows use git commits to persist the `blog_states.json` file:
-
-- **Initialization workflow** creates and commits the initial `blog_states.json`
-- **Daily workflow** updates and commits changes to `blog_states.json` after each run
-- **Auto-recovery** - If `blog_states.json` doesn't exist, the daily workflow automatically initializes
-- **Version history** - All state changes are tracked in git history with timestamps
-
-### Customizing Schedule
-
-Edit the cron expression in `daily-rss-check.yml`:
-
-```yaml
-schedule:
-  # Examples:
-  - cron: '0 9 * * *'    # 9:00 AM UTC daily
-  - cron: '0 17 * * *'   # 5:00 PM UTC daily
-  - cron: '0 9 * * 1-5'  # 9:00 AM UTC weekdays only
-  - cron: '0 */6 * * *'  # Every 6 hours
-```
-
-Use [crontab.guru](https://crontab.guru/) to help create custom schedules.
 
 ## License
 
-MIT License
+[MIT](https://opensource.org/licenses/MIT)

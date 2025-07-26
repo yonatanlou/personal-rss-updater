@@ -112,3 +112,22 @@ class EmailNotifier:
         except Exception as e:
             print(f"❌ Error sending bi-weekly reminder: {e}")
             return False
+
+    def send_single_post(self, post: Post) -> bool:
+        """Send a single post notification."""
+        try:
+            subject = f"{post.blog_name}: {post.title}"
+            html_content = f'<h1>{post.title}</h1><p><a href="{post.url}">Read more</a></p>'
+            text_content = f"{post.title}\n{post.url}"
+            success = self.email_sender.send_email(subject, html_content, text_content)
+
+            if success:
+                print(f"✅ Notification sent for {post.title}")
+            else:
+                print(f"❌ Failed to send notification for {post.title}")
+
+            return success
+
+        except Exception as e:
+            print(f"❌ Error sending single post notification: {e}")
+            return False

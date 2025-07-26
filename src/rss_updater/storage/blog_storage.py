@@ -81,6 +81,10 @@ class BlogStorage:
             last_success=datetime.now(),
         )
 
+    def update_last_reminder_sent(self, blog_name: str) -> None:
+        """Update the last reminder sent timestamp for a blog."""
+        self.update_blog_state(blog_name, last_reminder_sent=datetime.now())
+
     def increment_failure_count(self, blog_name: str, url: str = "") -> None:
         """Increment failure count for a blog."""
         current_state = self.get_blog_state(blog_name)
