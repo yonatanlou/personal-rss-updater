@@ -121,4 +121,11 @@
     "description": "Harper Reed is a technologist and entrepreneur who writes about technology, startups, and the future of .",
     "monitoring_strategy": "feed"
   }
+  ,
+  {
+    "name": "Matthew N. Bernstein Blog",
+    "url": "https://mbernste.github.io/feed.xml",
+    "description": "computational scientist.",
+    "monitoring_strategy": "feed"
+  }
 ]
