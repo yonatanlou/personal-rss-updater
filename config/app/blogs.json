@@ -127,5 +127,11 @@
     "url": "https://mbernste.github.io/feed.xml",
     "description": "computational scientist.",
     "monitoring_strategy": "feed"
+  },
+  {
+    "name": "Eugene Yan's Blog",
+    "url": "https://eugeneyan.com/rss/",
+    "description": "NLP.",
+    "monitoring_strategy": "feed"
   }
 ]
