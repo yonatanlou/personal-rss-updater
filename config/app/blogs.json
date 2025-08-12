@@ -133,5 +133,29 @@
     "url": "https://eugeneyan.com/rss/",
     "description": "NLP.",
     "monitoring_strategy": "feed"
+  },
+  {
+    "name": "DJ Navarro's Blog",
+    "url": "https://blog.djnavarro.net/index.xml",
+    "description": "stats",
+    "monitoring_strategy": "feed"
+  },
+  {
+    "name": "John D. Cook's Blog",
+    "url": "https://www.johndcook.com/blog/feed/",
+    "description": "stats",
+    "monitoring_strategy": "feed"
+  },
+  {
+    "name": "Data Skeptic",
+    "url": "https://dataskeptic.com/blog",
+    "description": "podcast",
+    "monitoring_strategy": "feed"
+  },
+  {
+    "name": "DataFramed",
+    "url": "https://www.datacamp.com/community/podcast",
+    "description": "podcast",
+    "monitoring_strategy": "feed"
   }
 ]
