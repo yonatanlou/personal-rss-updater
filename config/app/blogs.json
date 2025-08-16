@@ -31,12 +31,12 @@
   },
   {
     "name": "Gwern.net Newsletter",
-    "url": "https://gwern.net/changelog",
+    "url": "https://gwern.substack.com/feed",
     "monitoring_strategy": "feed"
   },
   {
     "name": "Jay Alammar",
-    "url": "https://newsletter.languagemodels.co/",
+    "url": "https://newsletter.languagemodels.co/feed",
     "monitoring_strategy": "feed"
   },
   {
@@ -66,12 +66,12 @@
   },
   {
     "name": "Vincent's Blog",
-    "url": "https://koaning.io/",
+    "url": "https://koaning.io/feed.xml",
     "monitoring_strategy": "feed"
   },
   {
     "name": "Nicholas Carlini",
-    "url": "https://nicholas.carlini.com/writing/",
+    "url": "https://nicholas.carlini.com/writing/feed.xml",
     "monitoring_strategy": "feed"
   },
   {
@@ -81,8 +81,8 @@
   },
   {
     "name": "near.blog",
-    "url": "https://near.blog/",
-    "monitoring_strategy": "scrape"
+    "url": "https://near.blog/feed",
+    "monitoring_strategy": "feed"
   },
   {
     "name": "r y x, r",
@@ -91,7 +91,7 @@
   },
   {
     "name": "ezyang's blog",
-    "url": "https.blog.ezyang.com/",
+    "url": "https://blog.ezyang.com/",
     "monitoring_strategy": "scrape"
   },
   {

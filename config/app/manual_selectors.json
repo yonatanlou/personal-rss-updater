@@ -12,10 +12,10 @@
     "description": "Posts are in h2 tags"
   },
   "Nicholas Carlini": {
-    "post_container": ".post",
-    "title_selector": "h3",
-    "link_selector": "h3 a",
-    "description": "Research blog with h3 titles"
+    "post_container": "div",
+    "title_selector": "a",
+    "link_selector": "a[href*='/writing/'][href*='20']",
+    "description": "Research blog with dated writing links"
   },
   "Mimansa Jaiswal": {
     "post_container": "li",
@@ -58,5 +58,17 @@
     "title_selector": "self",
     "link_selector": "self", 
     "description": "Math Programming blog - target the latest FHE post specifically until a more general solution is needed"
+  },
+  "Yonatan Lourie": {
+    "post_container": "div",
+    "title_selector": "a",
+    "link_selector": "a[href*='/blog/']:not([href='/blog/'])",
+    "description": "Personal blog - posts are links containing /blog/ but not the main blog directory"
+  },
+  "Jascha's blog": {
+    "post_container": "h3",
+    "title_selector": "h3",
+    "link_selector": "h3 a",
+    "description": "Academic blog with h3 titles for posts"
   }
 }
