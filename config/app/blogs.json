@@ -124,9 +124,9 @@
   ,
   {
     "name": "Matthew N. Bernstein Blog",
-    "url": "https://mbernste.github.io/feed.xml",
+    "url": "https://mbernste.github.io/year-archive/",
     "description": "computational scientist.",
-    "monitoring_strategy": "feed"
+    "monitoring_strategy": "scrape"
   },
   {
     "name": "Eugene Yan's Blog",
@@ -144,18 +144,6 @@
     "name": "John D. Cook's Blog",
     "url": "https://www.johndcook.com/blog/feed/",
     "description": "stats",
-    "monitoring_strategy": "feed"
-  },
-  {
-    "name": "Data Skeptic",
-    "url": "https://dataskeptic.com/blog",
-    "description": "podcast",
-    "monitoring_strategy": "feed"
-  },
-  {
-    "name": "DataFramed",
-    "url": "https://www.datacamp.com/community/podcast",
-    "description": "podcast",
     "monitoring_strategy": "feed"
   }
 ]

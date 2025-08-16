@@ -70,5 +70,11 @@
     "title_selector": "h3",
     "link_selector": "h3 a",
     "description": "Academic blog with h3 titles for posts"
+  },
+  "Matthew N. Bernstein Blog": {
+    "post_container": "ul",
+    "title_selector": "a",
+    "link_selector": "a[href*='/posts/']",
+    "description": "Year archive page with posts organized by year in unordered lists"
   }
 }
